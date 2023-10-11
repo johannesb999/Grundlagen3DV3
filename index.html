@@ -1,18 +1,13 @@
 <!DOCTYPE html>
-<html lang="DE">
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crime to GINI index</title>
 
     <!-- Load p5 libs-->
-    <script src="libs/p5.min.js"></script>
-    <script src="libs/p5.dom.min.js"></script>
-    <script src="libs/p5.sound.min.js"></script>
-    <!-- Load d3.js -->
-    <script src="http://d3js.org/d3.v4.js"></script>
-    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js"></script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,15 +16,21 @@
       rel="stylesheet"
     />
     <!-- Link documents -->
-    <script src="sketch.js"></script>
+    <script src="Sketch.js"></script>
     <link rel="stylesheet" href="stylesheet.css" />
   </head>
   <body>
-    
+    <div id="clean">
+      <input
+        type="range"
+        min="1990"
+        max="2021"
+        value="1990"
+        id="yearSlider"
+        step="1"
+      />
+      <span id="yearDisplay">1990</span>
+    </div>
   </body>
-</div>
-</div>
-  <footer>
-    
-  </footer>
+  <footer></footer>
 </html>
