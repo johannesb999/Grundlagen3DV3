@@ -15,11 +15,21 @@
       href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap"
       rel="stylesheet"
     />
-    <!-- Link documents -->
-    <script src="Sketch.js"></script>
-    <link rel="stylesheet" href="stylesheet.css" />
   </head>
   <body>
+    <div
+      id="tooltip"
+      style="
+        position: absolute;
+        padding: 10px;
+        background-color: white;
+        border: 1px solid black;
+      "
+    >
+      Land: <span id="country"></span><br />
+      Gini-Wert: <span id="giniValue"></span><br />
+      Kriminalitätsrate: <span id="crimeValue"></span>
+    </div>
     <div id="clean">
       <input
         type="range"
@@ -31,6 +41,9 @@
       />
       <span id="yearDisplay">1990</span>
     </div>
+    <!-- Link documents -->
+    <script src="Sketch.js"></script>
+    <link rel="stylesheet" href="stylesheet.css" />
   </body>
   <footer></footer>
 </html>

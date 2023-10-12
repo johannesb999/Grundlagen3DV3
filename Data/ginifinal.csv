@@ -30,12 +30,6 @@ Albania,ALB,2018,30
 Albania,ALB,2019,31
 Albania,ALB,2020,31
 Albania,ALB,2021,32
-
-
-
-
-
-
 Australia,AUS,1981,31
 Australia,AUS,1985,32
 Australia,AUS,1989,33
@@ -61,13 +55,6 @@ Australia,AUS,2018,34
 Australia,AUS,2019,34
 Australia,AUS,2020,34
 Australia,AUS,2021,35
-
-
-
-
-
-
-
 Austria,AUT,1987,23
 Austria,AUT,1994,31
 Austria,AUT,1995,31
@@ -90,12 +77,6 @@ Austria,AUT,2016,31
 Austria,AUT,2017,30
 Austria,AUT,2018,31
 Austria,AUT,2019,30
-
-
-
-
-
-
 Belarus,BLR,1993,22
 Belarus,BLR,1995,29
 Belarus,BLR,1998,32
@@ -121,9 +102,6 @@ Belarus,BLR,2017,25
 Belarus,BLR,2018,25
 Belarus,BLR,2019,25
 Belarus,BLR,2020,24
-
-
-
 Belgium,BEL,1985,25
 Belgium,BEL,1988,26
 Belgium,BEL,1992,25
@@ -147,11 +125,6 @@ Belgium,BEL,2016,28
 Belgium,BEL,2017,27
 Belgium,BEL,2018,27
 Belgium,BEL,2019,27
-
-
-
-
-
 Brazil,BRA,1981,57
 Brazil,BRA,1982,58
 Brazil,BRA,1983,59
@@ -188,10 +161,6 @@ Brazil,BRA,2017,53
 Brazil,BRA,2018,54
 Brazil,BRA,2019,53
 Brazil,BRA,2020,49
-
-
-
-
 Bulgaria,BGR,1989,23
 Bulgaria,BGR,1992,31
 Bulgaria,BGR,1994,24
@@ -213,11 +182,6 @@ Bulgaria,BGR,2016,41
 Bulgaria,BGR,2017,40
 Bulgaria,BGR,2018,41
 Bulgaria,BGR,2019,40
-
-
-
-
-
 Canada,CAN,1971,37
 Canada,CAN,1975,33
 Canada,CAN,1981,32
@@ -236,11 +200,6 @@ Canada,CAN,2014,33
 Canada,CAN,2015,33
 Canada,CAN,2016,32
 Canada,CAN,2017,33
-
-
-
-
-
 Chile,CHL,1987,56
 Chile,CHL,1990,57
 Chile,CHL,1992,55
@@ -256,11 +215,6 @@ Chile,CHL,2013,46
 Chile,CHL,2015,44
 Chile,CHL,2017,44
 Chile,CHL,2020,44
-
-
-
-
-
 China,CHN,1981,28
 China,CHN,1984,27
 China,CHN,1987,29
@@ -281,52 +235,6 @@ China,CHN,2016,38
 China,CHN,2017,39
 China,CHN,2018,38
 China,CHN,2019,38
-
-
-
-China - rural,,1981,24
-China - rural,,1984,26
-China - rural,,1987,29
-China - rural,,1990,30
-China - rural,,1993,32
-China - rural,,1996,33
-China - rural,,1999,35
-China - rural,,2002,38
-China - rural,,2005,36
-China - rural,,2008,39
-China - rural,,2010,40
-China - rural,,2011,38
-China - rural,,2012,39
-China - rural,,2013,33
-China - rural,,2014,33
-China - rural,,2015,33
-China - rural,,2016,33
-China - rural,,2017,34
-China - rural,,2018,33
-China - rural,,2019,32
-China - urban,,1981,18
-China - urban,,1984,17
-China - urban,,1987,20
-China - urban,,1990,25
-China - urban,,1993,28
-China - urban,,1996,29
-China - urban,,1999,31
-China - urban,,2002,33
-China - urban,,2005,34
-China - urban,,2008,35
-China - urban,,2010,36
-China - urban,,2011,36
-China - urban,,2012,35
-China - urban,,2013,36
-China - urban,,2014,36
-China - urban,,2015,36
-China - urban,,2016,36
-China - urban,,2017,36
-China - urban,,2018,36
-China - urban,,2019,37
-
-
-
 Colombia,COL,1992,51
 Colombia,COL,1996,57
 Colombia,COL,1999,59
@@ -349,11 +257,6 @@ Colombia,COL,2017,49
 Colombia,COL,2018,50
 Colombia,COL,2019,51
 Colombia,COL,2020,54
-
-
-
-
-
 Costa Rica,CRI,1981,47
 Costa Rica,CRI,1986,34
 Costa Rica,CRI,1989,46
@@ -388,11 +291,6 @@ Costa Rica,CRI,2017,48
 Costa Rica,CRI,2018,47
 Costa Rica,CRI,2019,48
 Costa Rica,CRI,2020,49
-
-
-
-
-
 Croatia,HRV,1998,29
 Croatia,HRV,1999,28
 Croatia,HRV,2000,31
@@ -410,12 +308,6 @@ Croatia,HRV,2016,31
 Croatia,HRV,2017,30
 Croatia,HRV,2018,29
 Croatia,HRV,2019,29
-
-
-
-
-
-
 Cyprus,CYP,2004,30
 Cyprus,CYP,2005,30
 Cyprus,CYP,2006,31
@@ -432,11 +324,6 @@ Cyprus,CYP,2016,33
 Cyprus,CYP,2017,31
 Cyprus,CYP,2018,33
 Cyprus,CYP,2019,31
-
-
-
-
-
 Czechia,CZE,1992,21
 Czechia,CZE,1993,27
 Czechia,CZE,1996,26
@@ -457,11 +344,6 @@ Czechia,CZE,2016,25
 Czechia,CZE,2017,25
 Czechia,CZE,2018,25
 Czechia,CZE,2019,25
-
-
-
-
-
 Denmark,DNK,1987,26
 Denmark,DNK,1992,24
 Denmark,DNK,1995,22
@@ -483,11 +365,6 @@ Denmark,DNK,2016,28
 Denmark,DNK,2017,29
 Denmark,DNK,2018,28
 Denmark,DNK,2019,28
-
-
-
-
-
 Dominican Republic,DOM,1986,48
 Dominican Republic,DOM,1989,50
 Dominican Republic,DOM,1992,51
@@ -514,11 +391,6 @@ Dominican Republic,DOM,2017,42
 Dominican Republic,DOM,2018,44
 Dominican Republic,DOM,2019,42
 Dominican Republic,DOM,2020,40
-
-
-
-
-
 Ecuador,ECU,1994,53
 Ecuador,ECU,1999,58
 Ecuador,ECU,2000,56
@@ -540,11 +412,6 @@ Ecuador,ECU,2017,45
 Ecuador,ECU,2018,45
 Ecuador,ECU,2019,46
 Ecuador,ECU,2020,47
-
-
-
-
-
 Egypt,EGY,1990,32
 Egypt,EGY,1995,30
 Egypt,EGY,1999,33
@@ -554,13 +421,6 @@ Egypt,EGY,2010,30
 Egypt,EGY,2012,28
 Egypt,EGY,2015,32
 Egypt,EGY,2017,31
-
-
-
-
-
-
-
 El Salvador,SLV,1991,54
 El Salvador,SLV,1995,50
 El Salvador,SLV,1996,51
@@ -586,12 +446,6 @@ El Salvador,SLV,2016,40
 El Salvador,SLV,2017,38
 El Salvador,SLV,2018,39
 El Salvador,SLV,2019,39
-
-
-
-
-
-
 Estonia,EST,1993,39
 Estonia,EST,1995,30
 Estonia,EST,1998,37
@@ -615,12 +469,6 @@ Estonia,EST,2016,31
 Estonia,EST,2017,30
 Estonia,EST,2018,30
 Estonia,EST,2019,31
-
-
-
-
-
-
 Finland,FIN,1987,22
 Finland,FIN,1991,23
 Finland,FIN,1995,23
@@ -642,11 +490,6 @@ Finland,FIN,2016,27
 Finland,FIN,2017,27
 Finland,FIN,2018,27
 Finland,FIN,2019,27
-
-
-
-
-
 France,FRA,1978,35
 France,FRA,1984,36
 France,FRA,1989,32
@@ -668,11 +511,6 @@ France,FRA,2015,32
 France,FRA,2016,31
 France,FRA,2017,31
 France,FRA,2018,32
-
-
-
-
-
 Georgia,GEO,1996,37
 Georgia,GEO,1997,40
 Georgia,GEO,1998,41
@@ -698,10 +536,6 @@ Georgia,GEO,2017,37
 Georgia,GEO,2018,36
 Georgia,GEO,2019,36
 Georgia,GEO,2020,34
-
-
-
-
 Germany,DEU,1991,29
 Germany,DEU,1992,29
 Germany,DEU,1993,29
@@ -730,12 +564,6 @@ Germany,DEU,2015,31
 Germany,DEU,2016,31
 Germany,DEU,2017,31
 Germany,DEU,2018,31
-
-
-
-
-
-
 Greece,GRC,1995,37
 Greece,GRC,2000,34
 Greece,GRC,2003,33
@@ -755,13 +583,6 @@ Greece,GRC,2016,35
 Greece,GRC,2017,34
 Greece,GRC,2018,33
 Greece,GRC,2019,33
-
-
-
-
-
-
-
 Honduras,HND,1989,59
 Honduras,HND,1990,57
 Honduras,HND,1991,52
@@ -792,9 +613,6 @@ Honduras,HND,2016,50
 Honduras,HND,2017,49
 Honduras,HND,2018,49
 Honduras,HND,2019,48
-
-
-
 Hungary,HUN,1987,21
 Hungary,HUN,1989,25
 Hungary,HUN,1991,30
@@ -822,12 +640,6 @@ Hungary,HUN,2016,30
 Hungary,HUN,2017,31
 Hungary,HUN,2018,30
 Hungary,HUN,2019,30
-
-
-
-
-
-
 Iceland,ISL,2003,27
 Iceland,ISL,2004,28
 Iceland,ISL,2005,29
@@ -843,11 +655,6 @@ Iceland,ISL,2014,28
 Iceland,ISL,2015,27
 Iceland,ISL,2016,27
 Iceland,ISL,2017,26
-
-
-
-
-
 India,IND,1977,33
 India,IND,1983,32
 India,IND,1987,33
@@ -860,98 +667,52 @@ India,IND,2016,35
 India,IND,2017,36
 India,IND,2018,35
 India,IND,2019,36
-
-
-
-India - rural,,1977,34
-India - rural,,1983,30
-India - rural,,1987,30
-India - rural,,1993,29
-India - rural,,2004,30
-India - rural,,2009,29
-India - rural,,2011,31
-India - rural,,2015,31
-India - rural,,2016,31
-India - rural,,2017,31
-India - rural,,2018,31
-India - rural,,2019,31
-India - urban,,1977,36
-India - urban,,1983,33
-India - urban,,1987,36
-India - urban,,1993,34
-India - urban,,2004,38
-India - urban,,2009,39
-India - urban,,2011,39
-India - urban,,2015,37
-India - urban,,2016,38
-India - urban,,2017,39
-India - urban,,2018,36
-India - urban,,2019,39
-
-
-
-
-
-
-
-Israel,ISR,1979,0.363299757619656
-Israel,ISR,1986,0.3649053994677242
-Israel,ISR,1992,0.3550725442974516
-Israel,ISR,1997,0.3809710599845769
-Israel,ISR,2001,0.3894766211110493
-Israel,ISR,2002,0.3955942270542948
-Israel,ISR,2003,0.4072257099910671
-Israel,ISR,2004,0.4145630065727199
-Israel,ISR,2005,0.4226762253608898
-Israel,ISR,2006,0.4155532239062903
-Israel,ISR,2007,0.4109863358913975
-Israel,ISR,2008,0.4164267940947838
-Israel,ISR,2009,0.4263395048024534
-Israel,ISR,2010,0.4252702457835088
-Israel,ISR,2011,0.4144416393744093
-Israel,ISR,2012,0.4160959640672664
-Israel,ISR,2013,0.4022482473992248
-Israel,ISR,2014,0.3975748888618402
-Israel,ISR,2015,0.3971952989384989
-Israel,ISR,2016,0.3901301526892952
-Israel,ISR,2017,0.3820206439128806
-Israel,ISR,2018,0.3857717384665088
-
-
-
-
-
-
-
-Italy,ITA,1986,0.3251640823575092
-Italy,ITA,1987,0.3454697394005763
-Italy,ITA,1989,0.3257331576650687
-Italy,ITA,1991,0.3146832586649527
-Italy,ITA,1993,0.3553788793076098
-Italy,ITA,1995,0.3523806366236202
-Italy,ITA,1998,0.3666078685636162
-Italy,ITA,2000,0.3525280984423746
-Italy,ITA,2003,0.3493130855082459
-Italy,ITA,2004,0.3429511626302363
-Italy,ITA,2005,0.3383360556237444
-Italy,ITA,2006,0.3369739603399532
-Italy,ITA,2007,0.3289073563667704
-Italy,ITA,2008,0.3377010232366898
-Italy,ITA,2009,0.3383577039072794
-Italy,ITA,2010,0.3472130832471843
-Italy,ITA,2011,0.3505721451796474
-Italy,ITA,2012,0.3515561059221849
-Italy,ITA,2013,0.3491184922890656
-Italy,ITA,2014,0.3465732830402379
-Italy,ITA,2015,0.3539743647773671
-Italy,ITA,2016,0.352462496122166
-Italy,ITA,2017,0.3592800094735345
-Italy,ITA,2018,0.3522257062873518
-
-
-
-
-
+Israel,ISR,1979,36
+Israel,ISR,1986,36
+Israel,ISR,1992,35
+Israel,ISR,1997,38
+Israel,ISR,2001,38
+Israel,ISR,2002,39
+Israel,ISR,2003,40
+Israel,ISR,2004,41
+Israel,ISR,2005,42
+Israel,ISR,2006,41
+Israel,ISR,2007,41
+Israel,ISR,2008,41
+Israel,ISR,2009,42
+Israel,ISR,2010,42
+Israel,ISR,2011,41
+Israel,ISR,2012,41
+Israel,ISR,2013,40
+Israel,ISR,2014,39
+Israel,ISR,2015,39
+Israel,ISR,2016,39
+Israel,ISR,2017,38
+Israel,ISR,2018,38
+Italy,ITA,1986,32
+Italy,ITA,1987,34
+Italy,ITA,1989,32
+Italy,ITA,1991,31
+Italy,ITA,1993,35
+Italy,ITA,1995,35
+Italy,ITA,1998,36
+Italy,ITA,2000,35
+Italy,ITA,2003,34
+Italy,ITA,2004,34
+Italy,ITA,2005,33
+Italy,ITA,2006,33
+Italy,ITA,2007,32
+Italy,ITA,2008,33
+Italy,ITA,2009,33
+Italy,ITA,2010,34
+Italy,ITA,2011,35
+Italy,ITA,2012,35
+Italy,ITA,2013,34
+Italy,ITA,2014,34
+Italy,ITA,2015,35
+Italy,ITA,2016,35
+Italy,ITA,2017,35
+Italy,ITA,2018,35
 Lithuania,LTU,1993,33
 Lithuania,LTU,1996,32
 Lithuania,LTU,1998,32
@@ -976,13 +737,6 @@ Lithuania,LTU,2016,38
 Lithuania,LTU,2017,37
 Lithuania,LTU,2018,36
 Lithuania,LTU,2019,35
-
-
-
-
-
-
-
 Luxembourg,LUX,1985,27
 Luxembourg,LUX,1991,27
 Luxembourg,LUX,1994,27
@@ -1005,12 +759,6 @@ Luxembourg,LUX,2016,31
 Luxembourg,LUX,2017,34
 Luxembourg,LUX,2018,35
 Luxembourg,LUX,2019,34
-
-
-
-
-
-
 Malaysia,MYS,1984,48
 Malaysia,MYS,1987,47
 Malaysia,MYS,1989,46
@@ -1027,10 +775,6 @@ Maldives,MDV,2002,41
 Maldives,MDV,2009,38
 Maldives,MDV,2016,31
 Maldives,MDV,2019,29
-
-
-
-
 Mexico,MEX,1984,48
 Mexico,MEX,1989,51
 Mexico,MEX,1992,53
@@ -1049,9 +793,6 @@ Mexico,MEX,2014,48
 Mexico,MEX,2016,47
 Mexico,MEX,2018,46
 Mexico,MEX,2020,45
-
-
-
 Moldova,MDA,1997,36
 Moldova,MDA,1998,39
 Moldova,MDA,1999,42
@@ -1085,10 +826,6 @@ Mongolia,MNG,2012,33
 Mongolia,MNG,2014,32
 Mongolia,MNG,2016,32
 Mongolia,MNG,2018,33
-
-
-
-
 Netherlands,NLD,1983,28
 Netherlands,NLD,1987,26
 Netherlands,NLD,1990,31
@@ -1110,14 +847,6 @@ Netherlands,NLD,2016,28
 Netherlands,NLD,2017,28
 Netherlands,NLD,2018,28
 Netherlands,NLD,2019,29
-
-
-
-
-
-
-
-
 Norway,NOR,1979,27
 Norway,NOR,1986,24
 Norway,NOR,1991,25
@@ -1140,11 +869,6 @@ Norway,NOR,2016,28
 Norway,NOR,2017,27
 Norway,NOR,2018,27
 Norway,NOR,2019,27
-
-
-
-
-
 Pakistan,PAK,1987,33
 Pakistan,PAK,1990,33
 Pakistan,PAK,1996,29
@@ -1158,16 +882,6 @@ Pakistan,PAK,2011,29
 Pakistan,PAK,2013,29
 Pakistan,PAK,2015,31
 Pakistan,PAK,2018,29
-
-
-
-
-
-
-
-
-
-
 Philippines,PHL,1985,41
 Philippines,PHL,1988,41
 Philippines,PHL,1991,44
@@ -1180,11 +894,6 @@ Philippines,PHL,2009,42
 Philippines,PHL,2012,42
 Philippines,PHL,2015,40
 Philippines,PHL,2018,38
-
-
-
-
-
 Poland,POL,1985,25
 Poland,POL,1986,28
 Poland,POL,1987,26
@@ -1215,9 +924,6 @@ Poland,POL,2016,30
 Poland,POL,2017,30
 Poland,POL,2018,31
 Poland,POL,2019,30
-
-
-
 Portugal,PRT,2003,39
 Portugal,PRT,2004,39
 Portugal,PRT,2005,39
@@ -1235,10 +941,6 @@ Portugal,PRT,2016,35
 Portugal,PRT,2017,33
 Portugal,PRT,2018,33
 Portugal,PRT,2019,32
-
-
-
-
 Romania,ROU,1989,23
 Romania,ROU,1992,25
 Romania,ROU,1994,28
@@ -1266,11 +968,6 @@ Romania,ROU,2016,29
 Romania,ROU,2017,36
 Romania,ROU,2018,29
 Romania,ROU,2019,35
-
-
-
-
-
 Russia,RUS,1993,48
 Russia,RUS,1996,46
 Russia,RUS,1997,38
@@ -1297,14 +994,6 @@ Russia,RUS,2017,37
 Russia,RUS,2018,37
 Russia,RUS,2019,38
 Russia,RUS,2020,36
-
-
-
-
-
-
-
-
 Serbia,SRB,2002,33
 Serbia,SRB,2003,33
 Serbia,SRB,2004,35
@@ -1322,12 +1011,6 @@ Serbia,SRB,2016,39
 Serbia,SRB,2017,36
 Serbia,SRB,2018,30
 Serbia,SRB,2019,29
-
-
-
-
-
-
 Slovakia,SVK,1992,20
 Slovakia,SVK,1996,26
 Slovakia,SVK,2004,29
@@ -1346,9 +1029,6 @@ Slovakia,SVK,2016,25
 Slovakia,SVK,2017,23
 Slovakia,SVK,2018,25
 Slovakia,SVK,2019,23
-
-
-
 Slovenia,SVN,1987,24
 Slovenia,SVN,1993,29
 Slovenia,SVN,1997,24
@@ -1372,11 +1052,6 @@ Slovenia,SVN,2016,25
 Slovenia,SVN,2017,24
 Slovenia,SVN,2018,25
 Slovenia,SVN,2019,24
-
-
-
-
-
 Spain,ESP,1980,34
 Spain,ESP,1985,34
 Spain,ESP,1990,32
@@ -1399,10 +1074,6 @@ Spain,ESP,2016,36
 Spain,ESP,2017,35
 Spain,ESP,2018,35
 Spain,ESP,2019,34
-
-
-
-
 Sweden,SWE,1967,34
 Sweden,SWE,1975,24
 Sweden,SWE,1981,23
@@ -1427,9 +1098,6 @@ Sweden,SWE,2016,30
 Sweden,SWE,2017,29
 Sweden,SWE,2018,30
 Sweden,SWE,2019,29
-
-
-
 Switzerland,CHE,1982,36
 Switzerland,CHE,1992,34
 Switzerland,CHE,2000,33
@@ -1447,10 +1115,6 @@ Switzerland,CHE,2015,32
 Switzerland,CHE,2016,33
 Switzerland,CHE,2017,32
 Switzerland,CHE,2018,33
-
-
-
-
 Thailand,THA,1981,45
 Thailand,THA,1988,43
 Thailand,THA,1990,45
@@ -1477,13 +1141,6 @@ Thailand,THA,2017,36
 Thailand,THA,2018,36
 Thailand,THA,2019,34
 Thailand,THA,2020,35
-
-
-
-
-
-
-
 Turkey,TUR,1987,43
 Turkey,TUR,1994,41
 Turkey,TUR,2002,41
@@ -1504,11 +1161,6 @@ Turkey,TUR,2016,42
 Turkey,TUR,2017,41
 Turkey,TUR,2018,42
 Turkey,TUR,2019,42
-
-
-
-
-
 Ukraine,UKR,1992,30
 Ukraine,UKR,1993,29
 Ukraine,UKR,1995,39
@@ -1533,11 +1185,6 @@ Ukraine,UKR,2017,26
 Ukraine,UKR,2018,26
 Ukraine,UKR,2019,27
 Ukraine,UKR,2020,26
-
-
-
-
-
 United Kingdom,GBR,1969,33
 United Kingdom,GBR,1974,30
 United Kingdom,GBR,1979,28
@@ -1567,12 +1214,6 @@ United Kingdom,GBR,2014,34
 United Kingdom,GBR,2015,33
 United Kingdom,GBR,2016,35
 United Kingdom,GBR,2017,35
-
-
-
-
-
-
 United States,USA,1974,35
 United States,USA,1979,34
 United States,USA,1986,37
@@ -1605,10 +1246,6 @@ United States,USA,2016,41
 United States,USA,2017,41
 United States,USA,2018,42
 United States,USA,2019,42
-
-
-
-
 Uruguay,URY,2006,46
 Uruguay,URY,2007,46
 Uruguay,URY,2008,45
@@ -1624,19 +1261,3 @@ Uruguay,URY,2017,39
 Uruguay,URY,2018,40
 Uruguay,URY,2019,40
 Uruguay,URY,2020,40
-Uruguay - urban,,1981,43
-Uruguay - urban,,1989,42
-Uruguay - urban,,1992,41
-Uruguay - urban,,1995,41
-Uruguay - urban,,1996,41
-Uruguay - urban,,1997,41
-Uruguay - urban,,1998,42
-Uruguay - urban,,2000,43
-Uruguay - urban,,2001,45
-Uruguay - urban,,2002,45
-Uruguay - urban,,2003,45
-Uruguay - urban,,2004,46
-Uruguay - urban,,2005,45
-
-
-
