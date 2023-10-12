@@ -1,0 +1,35 @@
+#clean {
+  display: flex;
+  flex-wrap: wrap;
+}
+#yearSlider {
+  width: 80%; /* Breite des Sliders */
+  height: 1px; /* Höhe des Sliders */
+  background-color: #ffffff; /* Hintergrundfarbe des Sliders */
+  border: none; /* Kein Rand */
+  border-radius: 5px; /* Abrundung der Ecken */
+  outline: none; /* Entfernt den blauen Rand bei Fokus */
+  margin: 0 auto; /* Zentriert den Slider horizontal */
+  position: absolute;
+  bottom: 0;
+  /* padding-bottom: 150px; */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+#yearSlider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04aa6d; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+#yearSlider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04aa6d; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
