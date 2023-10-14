@@ -4,7 +4,6 @@
 // alles gestalten
 // tooltip soll der hovereffekt sein aber funktioniert nicht
 // manchmal ist nichts highligtetd obwohl die daten dafür da sind //prüfen ob die daten wirklich richtig verbunden sind
-// ich kann erst samstag weitermachen
 
 let giniData;
 let crimeData;
@@ -104,7 +103,7 @@ function drawCrimePoints() {
     let y = map(crimeValue, 1, 100, 600, 250);
 
     // Zeichne den Datenpunkt
-    // fill(255);test ob ihr mal rein geschaut habt und wie genau haha
+    // fill(255);
     // ellipse(1150, y, 10, 10);
     points.push({
       x: 1150,
