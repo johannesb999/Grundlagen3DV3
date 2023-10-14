@@ -1,3 +1,4 @@
+Entity,Country Code,Year,GINI Index
 
 Albania,ALB,1990,24
 Albania,ALB,1991,21
@@ -22,6 +23,7 @@ Albania,ALB,2009,31
 Albania,ALB,2010,31
 Albania,ALB,2011,29
 Albania,ALB,2012,28
+Albania,ALB,2013,31
 Albania,ALB,2014,34
 Albania,ALB,2015,32
 Albania,ALB,2016,33
@@ -30,11 +32,6 @@ Albania,ALB,2018,30
 Albania,ALB,2019,31
 Albania,ALB,2020,31
 Albania,ALB,2021,32
-
-
-
-
-
 
 Australia,AUS,1990,31
 Australia,AUS,1991,32
@@ -69,12 +66,6 @@ Australia,AUS,2019,34
 Australia,AUS,2020,34
 Australia,AUS,2021,35
 
-
-
-
-
-
-
 Austria,AUT,1990,23
 Austria,AUT,1991,25
 Austria,AUT,1992,28
@@ -108,15 +99,11 @@ Austria,AUT,2019,30
 Austria,AUT,2020,30
 Austria,AUT,2021,31
 
-
-
-
-
-
 Belarus,BLR,1990,20
 Belarus,BLR,1991,21
 Belarus,BLR,1992,22
 Belarus,BLR,1993,22
+Belarus,BLR,1994,25
 Belarus,BLR,1995,29
 Belarus,BLR,1996,29
 Belarus,BLR,1997,30
@@ -144,8 +131,6 @@ Belarus,BLR,2018,25
 Belarus,BLR,2019,25
 Belarus,BLR,2020,24
 Belarus,BLR,2021,23
-
-
 
 Belgium,BEL,1990,25
 Belgium,BEL,1991,26
@@ -180,12 +165,6 @@ Belgium,BEL,2019,27
 Belgium,BEL,2020,26
 Belgium,BEL,2021,27
 
-
-
-
-
-
-
 Brazil,BRA,1990,60
 Brazil,BRA,1991,56
 Brazil,BRA,1992,53
@@ -196,6 +175,7 @@ Brazil,BRA,1996,60
 Brazil,BRA,1997,60
 Brazil,BRA,1998,60
 Brazil,BRA,1999,59
+Brazil,BRA,2000,59
 Brazil,BRA,2001,58
 Brazil,BRA,2002,58
 Brazil,BRA,2003,57
@@ -205,6 +185,7 @@ Brazil,BRA,2006,55
 Brazil,BRA,2007,54
 Brazil,BRA,2008,54
 Brazil,BRA,2009,54
+Brazil,BRA,2010,53
 Brazil,BRA,2011,53
 Brazil,BRA,2012,53
 Brazil,BRA,2013,53
@@ -217,9 +198,6 @@ Brazil,BRA,2019,53
 Brazil,BRA,2020,49
 Brazil,BRA,2021,47
 
-
-
-
 Bulgaria,BGR,1990,23
 Bulgaria,BGR,1991,26
 Bulgaria,BGR,1992,31
@@ -230,6 +208,7 @@ Bulgaria,BGR,1996,30
 Bulgaria,BGR,1997,26
 Bulgaria,BGR,1998,25
 Bulgaria,BGR,1999,26
+Bulgaria,BGR,2000,34
 Bulgaria,BGR,2001,33
 Bulgaria,BGR,2002,30
 Bulgaria,BGR,2003,29
@@ -251,12 +230,6 @@ Bulgaria,BGR,2018,41
 Bulgaria,BGR,2019,40
 Bulgaria,BGR,2020,39
 Bulgaria,BGR,2021,41
-
-
-
-
-
-
 
 Canada,CAN,1990,32
 Canada,CAN,1991,31
@@ -291,12 +264,6 @@ Canada,CAN,2019,33
 Canada,CAN,2020,33
 Canada,CAN,2021,33
 
-
-
-
-
-
-
 Chile,CHL,1990,57
 Chile,CHL,1987,56
 Chile,CHL,1992,55
@@ -329,47 +296,6 @@ Chile,CHL,2018,44
 Chile,CHL,2019,44
 Chile,CHL,2020,44
 Chile,CHL,2021,44
-
-
-
-
-
-
-China,CHN,1990,32
-China,CHN,1991,31
-China,CHN,1992,32
-China,CHN,1993,33
-China,CHN,1994,33
-China,CHN,1995,34
-China,CHN,1996,35
-China,CHN,1997,35
-China,CHN,1998,35
-China,CHN,1999,38
-China,CHN,2000,39
-China,CHN,2001,40
-China,CHN,2002,42
-China,CHN,2003,42
-China,CHN,2004,42
-China,CHN,2005,41
-China,CHN,2006,41
-China,CHN,2007,42
-China,CHN,2008,43
-China,CHN,2010,44
-China,CHN,2011,42
-China,CHN,2012,42
-China,CHN,2013,39
-China,CHN,2014,39
-China,CHN,2015,38
-China,CHN,2016,38
-China,CHN,2017,39
-China,CHN,2018,38
-China,CHN,2019,38
-China,CHN,2020,37
-China,CHN,2021,36
-
-
-
-
 
 Colombia,COL,1990,48
 Colombia,COL,1991,50
@@ -404,11 +330,6 @@ Colombia,COL,2019,51
 Colombia,COL,2020,54
 Colombia,COL,2021,54
 
-
-
-
-
-
 Costa Rica,CRI,1990,45
 Costa Rica,CRI,1991,47
 Costa Rica,CRI,1992,46
@@ -441,10 +362,6 @@ Costa Rica,CRI,2018,47
 Costa Rica,CRI,2019,48
 Costa Rica,CRI,2020,49
 Costa Rica,CRI,2021,48
-
-
-
-
 
 Croatia,HRV,1990,25
 Croatia,HRV,1991,25
@@ -479,7 +396,6 @@ Croatia,HRV,2019,29
 Croatia,HRV,2020,29
 Croatia,HRV,2021,30
 
-
 Cyprus,CYP,1990,25
 Cyprus,CYP,1991,26
 Cyprus,CYP,1992,27
@@ -512,85 +428,6 @@ Cyprus,CYP,2018,33
 Cyprus,CYP,2019,31
 Cyprus,CYP,2020,30
 Cyprus,CYP,2021,32
-
-
-
-
-
-Czechia,CZE,1990,19
-Czechia,CZE,1991,20
-Czechia,CZE,1992,21
-Czechia,CZE,1993,27
-Czechia,CZE,1994,27
-Czechia,CZE,1995,26
-Czechia,CZE,1996,26
-Czechia,CZE,1997,25
-Czechia,CZE,1998,26
-Czechia,CZE,1999,26
-Czechia,CZE,2000,26
-Czechia,CZE,2001,26
-Czechia,CZE,2002,27
-Czechia,CZE,2004,28
-Czechia,CZE,2005,27
-Czechia,CZE,2006,27
-Czechia,CZE,2007,26
-Czechia,CZE,2008,26
-Czechia,CZE,2009,26
-Czechia,CZE,2010,27
-Czechia,CZE,2011,26
-Czechia,CZE,2012,26
-Czechia,CZE,2013,26
-Czechia,CZE,2014,26
-Czechia,CZE,2015,26
-Czechia,CZE,2016,25
-Czechia,CZE,2017,25
-Czechia,CZE,2018,25
-Czechia,CZE,2019,25
-Czechia,CZE,2020,26
-Czechia,CZE,2021,26
-
-
-
-
-
-
-Denmark,DNK,1990,26
-Denmark,DNK,1991,25
-Denmark,DNK,1992,24
-Denmark,DNK,1993,23
-Denmark,DNK,1994,22
-Denmark,DNK,1995,22
-Denmark,DNK,1996,21
-Denmark,DNK,1997,22
-Denmark,DNK,1998,22
-Denmark,DNK,1999,22
-Denmark,DNK,2000,23
-Denmark,DNK,2001,23
-Denmark,DNK,2002,23
-Denmark,DNK,2003,25
-Denmark,DNK,2004,24
-Denmark,DNK,2005,25
-Denmark,DNK,2006,26
-Denmark,DNK,2007,26
-Denmark,DNK,2008,25
-Denmark,DNK,2009,27
-Denmark,DNK,2010,27
-Denmark,DNK,2011,27
-Denmark,DNK,2012,28
-Denmark,DNK,2013,29
-Denmark,DNK,2014,28
-Denmark,DNK,2015,28
-Denmark,DNK,2016,28
-Denmark,DNK,2017,29
-Denmark,DNK,2018,28
-Denmark,DNK,2019,28
-Denmark,DNK,2020,28
-Denmark,DNK,2021,28
-
-
-
-
-
 
 Dominican Republic,DOM,1990,48
 Dominican Republic,DOM,1991,50
@@ -625,9 +462,6 @@ Dominican Republic,DOM,2019,42
 Dominican Republic,DOM,2020,40
 Dominican Republic,DOM,2021,41
 
-
-
-
 Ecuador,ECU,1990,49
 Ecuador,ECU,1991,50
 Ecuador,ECU,1992,49
@@ -660,11 +494,6 @@ Ecuador,ECU,2018,45
 Ecuador,ECU,2019,46
 Ecuador,ECU,2020,47
 Ecuador,ECU,2021,46
-
-
-
-
-
 
 Egypt,EGY,1990,32
 Egypt,EGY,1991,32
@@ -699,12 +528,6 @@ Egypt,EGY,2019,31
 Egypt,EGY,2020,30
 Egypt,EGY,2021,30
 
-
-
-
-
-
-
 El Salvador,SLV,1990,58
 El Salvador,SLV,1991,54
 El Salvador,SLV,1992,54
@@ -737,11 +560,6 @@ El Salvador,SLV,2018,39
 El Salvador,SLV,2019,38
 El Salvador,SLV,2020,39
 El Salvador,SLV,2021,40
-
-
-
-
-
 
 Estonia,EST,1990,41
 Estonia,EST,1991,31
@@ -776,12 +594,6 @@ Estonia,EST,2019,31
 Estonia,EST,2020,31
 Estonia,EST,2021,31
 
-
-
-
-
-
-
 Finland,FIN,1990,22
 Finland,FIN,1991,23
 Finland,FIN,1992,23
@@ -814,8 +626,6 @@ Finland,FIN,2018,27
 Finland,FIN,2019,27
 Finland,FIN,2020,27
 Finland,FIN,2021,27
-
-
 
 France,FRA,1990,35
 France,FRA,1991,35
@@ -850,7 +660,6 @@ France,FRA,2019,32
 France,FRA,2020,32
 France,FRA,2021,32
 
-
 Georgia,GEO,1990,32
 Georgia,GEO,1991,33
 Georgia,GEO,1992,34
@@ -883,9 +692,6 @@ Georgia,GEO,2018,36
 Georgia,GEO,2019,36
 Georgia,GEO,2020,34
 Georgia,GEO,2021,35
-
-
-
 
 Germany,DEU,1990,29
 Germany,DEU,1991,29
@@ -920,11 +726,6 @@ Germany,DEU,2019,31
 Germany,DEU,2020,32
 Germany,DEU,2021,32
 
-
-
-
-
-
 Greece,GRC,1990,41
 Greece,GRC,1991,39
 Greece,GRC,1992,38
@@ -957,13 +758,6 @@ Greece,GRC,2018,33
 Greece,GRC,2019,33
 Greece,GRC,2020,33
 Greece,GRC,2021,33
-
-
-
-
-
-
-
 
 Honduras,HND,1990,57
 Honduras,HND,1991,52
@@ -998,9 +792,6 @@ Honduras,HND,2019,48
 Honduras,HND,2020,48
 Honduras,HND,2021,47
 
-
-
-
 Hungary,HUN,1990,25
 Hungary,HUN,1991,30
 Hungary,HUN,1992,29
@@ -1033,13 +824,6 @@ Hungary,HUN,2018,30
 Hungary,HUN,2019,30
 Hungary,HUN,2020,31
 Hungary,HUN,2021,32
-
-
-
-
-
-
-
 
 Iceland,ISL,1990,27
 Iceland,ISL,1991,27
@@ -1074,12 +858,6 @@ Iceland,ISL,2019,26
 Iceland,ISL,2020,26
 Iceland,ISL,2021,25
 
-
-
-
-
-
-
 India,IND,1990,32
 India,IND,1991,32
 India,IND,1992,33
@@ -1100,6 +878,7 @@ India,IND,2006,34
 India,IND,2007,34
 India,IND,2008,34
 India,IND,2009,35
+India,IND,2010,35
 India,IND,2011,36
 India,IND,2012,35
 India,IND,2013,35
@@ -1112,15 +891,6 @@ India,IND,2019,36
 India,IND,2020,36
 India,IND,2021,36
 
-
-
-
-
-
-
-
-
-
 Italy,ITA,1990,0.3257331576650687
 Italy,ITA,1991,0.3146832586649527
 Italy,ITA,1992,0.3251640823575092
@@ -1130,6 +900,7 @@ Italy,ITA,1995,0.299746238754667
 Italy,ITA,1996,0.3335268762352562
 Italy,ITA,1997,0.3524678532980325
 Italy,ITA,1998,0.3666078685636162
+Italy,ITA,1998,0.36
 Italy,ITA,2000,0.3525280984423746
 Italy,ITA,2001,0.3525280984423746
 Italy,ITA,2002,0.320547376723589
@@ -1152,9 +923,6 @@ Italy,ITA,2018,0.352225706287351
 Italy,ITA,2019,0.3522257062873518
 Italy,ITA,2020,0.3603784523352353
 Italy,ITA,2021,0.410037563258844
-
-
-
 
 Lithuania,LTU,1990,33
 Lithuania,LTU,1991,33
@@ -1189,12 +957,6 @@ Lithuania,LTU,2019,35
 Lithuania,LTU,2020,35
 Lithuania,LTU,2021,35
 
-
-
-
-
-
-
 Luxembourg,LUX,1990,27
 Luxembourg,LUX,1991,27
 Luxembourg,LUX,1992,27
@@ -1227,11 +989,6 @@ Luxembourg,LUX,2018,35
 Luxembourg,LUX,2019,34
 Luxembourg,LUX,2020,34
 Luxembourg,LUX,2021,34
-
-
-
-
-
 
 Mexico,MEX,1990,48
 Mexico,MEX,1991,51
@@ -1266,8 +1023,6 @@ Mexico,MEX,2019,47
 Mexico,MEX,2020,45
 Mexico,MEX,2021,44
 
-
-
 Moldova,MDA,1990,34
 Moldova,MDA,1991,34
 Moldova,MDA,1992,34
@@ -1300,8 +1055,6 @@ Moldova,MDA,2018,26
 Moldova,MDA,2019,26
 Moldova,MDA,2020,26
 Moldova,MDA,2021,25
-
-
 
 Netherlands,NLD,1990,31
 Netherlands,NLD,1991,32
@@ -1336,54 +1089,6 @@ Netherlands,NLD,2019,29
 Netherlands,NLD,2020,28
 Netherlands,NLD,2021,29
 
-
-
-
-
-
-
-
-Norway,NOR,1990,24
-Norway,NOR,1991,25
-Norway,NOR,1992,25
-Norway,NOR,1993,26
-Norway,NOR,1994,25
-Norway,NOR,1995,26
-Norway,NOR,2000,27
-Norway,NOR,2001,27
-Norway,NOR,2002,27
-Norway,NOR,2003,27
-Norway,NOR,2004,31
-Norway,NOR,2005,30
-Norway,NOR,2006,26
-Norway,NOR,2007,27
-Norway,NOR,2008,26
-Norway,NOR,2009,26
-Norway,NOR,2010,25
-Norway,NOR,2011,25
-Norway,NOR,2012,25
-Norway,NOR,2013,26
-Norway,NOR,2014,27
-Norway,NOR,2015,27
-Norway,NOR,2016,28
-Norway,NOR,2017,27
-Norway,NOR,2018,27
-Norway,NOR,2019,27
-Norway,NOR,2020,27
-Norway,NOR,2021,27
-
-
-
-
-
-
-
-
-
-
-
-
-
 Poland,POL,1985,25
 Poland,POL,1986,28
 Poland,POL,1987,26
@@ -1414,9 +1119,9 @@ Poland,POL,2016,30
 Poland,POL,2017,30
 Poland,POL,2018,31
 Poland,POL,2019,30
-
-
-
+Poland,POL,2019,27
+Poland,POL,2019,26
+Poland,POL,2019,26
 
 Portugal,PRT,1990,41
 Portugal,PRT,1991,39
@@ -1451,9 +1156,6 @@ Portugal,PRT,2019,32
 Portugal,PRT,2020,32
 Portugal,PRT,2021,32
 
-
-
-
 Romania,ROU,1990,23
 Romania,ROU,1991,23
 Romania,ROU,1992,25
@@ -1486,9 +1188,6 @@ Romania,ROU,2018,29
 Romania,ROU,2019,35
 Romania,ROU,2020,35
 Romania,ROU,2021,35
-
-
-
 
 Russia,RUS,1990,48
 Russia,RUS,1991,48
@@ -1523,14 +1222,6 @@ Russia,RUS,2019,38
 Russia,RUS,2020,36
 Russia,RUS,1921,48
 
-
-
-
-
-
-
-
-
 Slovakia,SVK,1990,19
 Slovakia,SVK,1991,20
 Slovakia,SVK,1992,20
@@ -1563,8 +1254,6 @@ Slovakia,SVK,2018,25
 Slovakia,SVK,2019,23
 Slovakia,SVK,2020,23
 Slovakia,SVK,2021,23
-
-
 
 Slovenia,SVN,1990,24
 Slovenia,SVN,1991,26
@@ -1599,10 +1288,6 @@ Slovenia,SVN,2019,24
 Slovenia,SVN,2020,25
 Slovenia,SVN,2021,23
 
-
-
-
-
 Spain,ESP,1990,32
 Spain,ESP,1991,32
 Spain,ESP,1992,34
@@ -1635,9 +1320,6 @@ Spain,ESP,2018,35
 Spain,ESP,2019,34
 Spain,ESP,2020,34
 Spain,ESP,2021,34
-
-
-
 
 Sweden,SWE,1990,23
 Sweden,SWE,1991,24
@@ -1672,9 +1354,6 @@ Sweden,SWE,2019,29
 Sweden,SWE,2020,29
 Sweden,SWE,2021,30
 
-
-
-
 Switzerland,CHE,1990,33
 Switzerland,CHE,1991,35
 Switzerland,CHE,1992,34
@@ -1707,12 +1386,6 @@ Switzerland,CHE,2018,33
 Switzerland,CHE,2019,33
 Switzerland,CHE,2020,33
 Switzerland,CHE,2021,33
-
-
-
-
-
-
 
 Thailand,THA,1990,45
 Thailand,THA,1991,46
@@ -1747,50 +1420,6 @@ Thailand,THA,2019,34
 Thailand,THA,2020,35
 Thailand,THA,2021,35
 
-
-
-
-
-
-
-
-Turkey,TUR,1990,43
-Turkey,TUR,1991,42
-Turkey,TUR,1992,43
-Turkey,TUR,1993,41
-Turkey,TUR,1994,41
-Turkey,TUR,1995,41
-Turkey,TUR,1996,41
-Turkey,TUR,1997,41
-Turkey,TUR,1998,41
-Turkey,TUR,1999,41
-Turkey,TUR,2000,41
-Turkey,TUR,2001,41
-Turkey,TUR,2002,41
-Turkey,TUR,2003,42
-Turkey,TUR,2004,41
-Turkey,TUR,2005,42
-Turkey,TUR,2006,39
-Turkey,TUR,2007,38
-Turkey,TUR,2008,39
-Turkey,TUR,2009,39
-Turkey,TUR,2010,39
-Turkey,TUR,2011,40
-Turkey,TUR,2012,40
-Turkey,TUR,2013,40
-Turkey,TUR,2014,41
-Turkey,TUR,2015,43
-Turkey,TUR,2016,42
-Turkey,TUR,2017,41
-Turkey,TUR,2018,42
-Turkey,TUR,2019,42
-Turkey,TUR,2020,42
-Turkey,TUR,2021,42
-
-
-
-
-
 Ukraine,UKR,1990,30
 Ukraine,UKR,1991,30
 Ukraine,UKR,1992,33
@@ -1823,13 +1452,6 @@ Ukraine,UKR,2018,26
 Ukraine,UKR,2019,27
 Ukraine,UKR,2020,26
 Ukraine,UKR,2021,28
-
-
-
-
-
-
-
 
 United Kingdom,GBR,1990,36
 United Kingdom,GBR,1991,36
@@ -1864,13 +1486,6 @@ United Kingdom,GBR,2019,35
 United Kingdom,GBR,2020,37
 United Kingdom,GBR,2021,37
 
-
-
-
-
-
-
-
 United States,USA,1990,37
 United States,USA,1991,38
 United States,USA,1992,38
@@ -1903,4 +1518,3 @@ United States,USA,2018,42
 United States,USA,2019,42
 United States,USA,2020,42
 United States,USA,2021,42
-
