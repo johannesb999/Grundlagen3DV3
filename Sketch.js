@@ -7,11 +7,11 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(1500, 750);
 }
 function draw() {
-  background(220);
-  ellipse(mouseX, mouseY, 50, 50);
+  background(0);
+  rect(mouseX, mouseY, 50, 50);
 }
 
 class Countrys {
@@ -32,8 +32,6 @@ class Countrys {
 
     return dataForYear;
   }
-
-  // ... (more methods can be added)
 }
 
 // Usage example
