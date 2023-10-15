@@ -24,7 +24,6 @@ let minYear = 1999; // Minimum year
 let maxYear = 2021; // Maximum year
 let currentYear = minYear; // The current year
 
-
 function preload() {
   crimeRateData = loadTable("data/crimerate.csv", "csv", "header");
   giniIndexData = loadTable("data/giniindex.csv", "csv", "header");
@@ -33,8 +32,8 @@ function loadData() {
   countrys = new Countrys();
   countrys.loadCrimeRates(crimeRateData);
   countrys.loadGiniIndexes(giniIndexData);
-  console.log(crimeRateData)
-  console.log(giniIndexData)
+  console.log(crimeRateData);
+  console.log(giniIndexData);
 }
 
 function setup() {
@@ -79,15 +78,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const yearLabels = document.getElementById("yearLabels");
   const yearSlider = document.getElementById("yearSlider");
 
-
-
   // Ländercodes anwenden
   document
     .getElementById("applyHighlight")
     .addEventListener("click", function () {
       highlightedCountriesShowLabel = false;
       const input = document.getElementById("highlightedCountries").value;
-      console.log(input)
+      console.log(input);
       initiallyHighlightedCountries.push(input);
       highlightedCountries = input
         .split(",")
@@ -148,20 +145,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // playButton.addEventListener("click", toggleAnimation);
   playButton.addEventListener("click", toggleAnimation);
-
-
-
 });
 
 function updateYearData() {
-  currentYear = parseInt(yearSlider.value());//hier
-  console.log("hier")
+  currentYear = parseInt(yearSlider.value()); //hier
+  console.log("hier");
   yearDisplay.html(currentYear);
   giniData = countrys.getDataByYear(currentYear, "gini");
   crimeData = countrys.getDataByYear(currentYear, "crime");
-  console.log(currentYear)
-  console.log(giniData)
-  console.log(crimeData)
+  console.log(currentYear);
+  console.log(giniData);
+  console.log(crimeData);
 }
 
 function draw() {
@@ -419,7 +413,7 @@ function toggleAnimation() {
       }
       yearSlider.value(currentYear);
       updateYearData();
-      updateVisibleYear(currentYear)
+      updateVisibleYear(currentYear);
       // yearSlider.html(currentYear);
     }, 1000); // 1000 milliseconds (1 second) delay
   } else {
@@ -427,6 +421,3 @@ function toggleAnimation() {
     clearInterval(animationInterval);
   }
 }
-
-
-
