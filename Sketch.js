@@ -1,3 +1,6 @@
+// es hängt sich ab 2014 auf wahrscheinlich wegen der Daten --> Console
+// schöner gestalten
+
 let crimeRateData;
 let giniIndexData;
 let countrys;
@@ -9,6 +12,7 @@ let yearSlider;
 let yearDisplay;
 let showLabels = false;
 let highlightedCountries = [];
+const initiallyHighlightedCountries = ["USA", "DEU", "GBR"];
 
 function preload() {
   crimeRateData = loadTable("data/crimerate.csv", "csv", "header");
@@ -94,7 +98,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initial das ausgewählte Jahr sichtbar machen
   updateVisibleYear(yearSlider.value);
+  //   Toggle-Button
   toggleButton.addEventListener("click", function () {
+    showLabels = !showLabels; // Umschalten zwischen true und false
     if (
       openModalButton.style.display === "none" ||
       openModalButton.style.display === ""
@@ -104,6 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
       openModalButton.style.display = "none";
     }
   });
+
   // Modal öffnen und schließen
   btn.onclick = function () {
     modal.style.display = "block";
@@ -130,11 +137,17 @@ function updateYearData() {
 
 function draw() {
   background(0);
+  //   // Schatteneinstellungen
+  //   drawingContext.shadowOffsetX = 0;
+  //   drawingContext.shadowOffsetY = 0;
+  //   drawingContext.shadowBlur = 20;
+  //   drawingContext.shadowColor = "rgba(255, 255, 255, 0.7)";
 
   // Zeichnet vertikale Säulen
   stroke(255);
   line(300, 100, 300, 650); // Gini-Säule
   line(1200, 100, 1200, 650); // Crime-Säule
+
   if (showLabels) {
     // Beschriftungen für die Gini-Säule hinzufügen
     fill(255); // Textfarbe
@@ -143,12 +156,40 @@ function draw() {
       let y = map(i, 0, 100, 650, 100);
       text(i, 280, y);
     }
+    let leftText = [
+      "CRIME Explanation",
+      "sfbfewuf jdfb fjebf djsdwu",
+      "sfbfewuf jdfb fjebf djsdw",
+      "sfbfewuf jdfb fjebf djsdw",
+    ];
+    let xLeft = 50;
+    let yLeft = 550;
+    for (let i = 0; i < leftText.length; i++) {
+      text(leftText[i], xLeft, yLeft + i * 15); // 15 ist der Zeilenabstand
+    }
 
     // Beschriftungen für die Crime-Säule hinzufügen
     for (let i = 0; i <= 100; i += 10) {
       let y = map(i, 0, 100, 650, 100);
       text(i, 1220, y);
     }
+    let rightText = [
+      "GINI",
+      "The GINI index shows how fair the",
+      "distribution of income is in a county.",
+      "0 means that all income is equally",
+      "distributed.",
+    ];
+    let xRight = 1250; // Position weit genug rechts
+    let yRight = 550;
+    for (let i = 0; i < rightText.length; i++) {
+      text(rightText[i], xRight, yRight + i * 15); // 15 ist der Zeilenabstand
+    }
+
+    // Title
+    textSize(32);
+    fill(255); // weiß
+    text("Crime to GINI index", 10, 40); // Text und seine Position
   }
 
   //   Linie zwischen den Punkten
@@ -167,11 +208,19 @@ function draw() {
             giniData[i].getString("Country Code").toUpperCase()
           )
         ) {
-          stroke(255);
+          stroke(255, 100, 30);
           strokeWeight(2);
+        }
+        if (
+          initiallyHighlightedCountries.includes(
+            giniData[i].getString("Country Code").toUpperCase()
+          )
+        ) {
+          stroke(255, 100, 30);
         } else {
           stroke(40);
         }
+
         line(300, giniPoint, 1200, crimePoint);
       } else {
         console.log(

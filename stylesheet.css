@@ -94,8 +94,8 @@
   position: fixed; /* Fixed Position */
   top: 10px; /* Von der oberen Kante entfernt */
   right: 10px; /* Von der rechten Kante entfernt */
-  width: 50px; /* Breite */
-  height: 50px; /* Höhe */
+  width: auto; /* Breite */
+  height: auto; /* Höhe */
 }
 
 /* Modal */
@@ -132,4 +132,11 @@
 
 .close {
   cursor: pointer;
+}
+#toggleButton,
+#yearSlider,
+#openModal,
+#tooltip,
+h1 {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
 }
