@@ -16,19 +16,15 @@
     />
   </head>
   <body>
+    <button id="toggleButton">Toggle View</button>
+    <div id="contentToToggle" style="display: none">
+      <!-- Ihr Inhalt hier -->
+    </div>
     <div id="yearLabels"></div>
     <input type="range" id="yearSlider" min="1999" max="2021" value="2000" />
     <span id="yearDisplay" style="display: none">2000</span>
 
-    <div
-      id="tooltip"
-      style="
-        position: absolute;
-        display: none;
-        background-color: white;
-        border: 1px solid black;
-      "
-    >
+    <div id="tooltip" style="position: absolute; display: none">
       <p id="tooltipText"></p>
     </div>
     <!-- Link documents -->
