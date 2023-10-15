@@ -8,36 +8,33 @@ let tooltipText;
 let yearSlider;
 let yearDisplay;
 let showLabels = false;
+let highlightedCountries = [];
 
 function preload() {
   crimeRateData = loadTable("data/crimerate.csv", "csv", "header");
   giniIndexData = loadTable("data/giniindex.csv", "csv", "header");
 }
-
-function setup() {
-  createCanvas(windowWidth, windowHeight); // Canvas-Größe auf Fenstergröße setzen
-  // slider
-  yearSlider = select("#yearSlider");
-  yearDisplay = select("#yearDisplay");
-  yearSlider.input(updateYearData); //bei Änderungen am Slider aufgerufen wird
-
+function loadData() {
   countrys = new Countrys();
   countrys.loadCrimeRates(crimeRateData);
   countrys.loadGiniIndexes(giniIndexData);
+}
 
-  // Debug-Ausgaben
-  let currentYear = parseInt(yearSlider.value()); // Konvertieren Sie den Wert in eine Zahl
-  yearDisplay.html(currentYear); // Aktuellen Wert im Display anzeigen
-  // data read
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  loadData();
+  yearSlider = select("#yearSlider");
+  yearDisplay = select("#yearDisplay");
+  yearSlider.input(updateYearData);
+
+  let currentYear = parseInt(yearSlider.value());
+  yearDisplay.html(currentYear);
   giniData = countrys.getDataByYear(currentYear, "gini");
   crimeData = countrys.getDataByYear(currentYear, "crime");
-  console.log("Gini data for the year:", giniData);
-  console.log("Crime data for the year:", crimeData);
-
-  //tooltip
   tooltip = document.getElementById("tooltip");
   tooltipText = document.getElementById("tooltipText");
 }
+
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
@@ -45,7 +42,58 @@ function windowResized() {
 document.addEventListener("DOMContentLoaded", function () {
   const toggleButton = document.getElementById("toggleButton");
   const openModalButton = document.getElementById("openModal");
+  const modal = document.getElementById("countryModal");
+  const btn = document.getElementById("openModal");
+  const span = document.getElementsByClassName("close")[0];
+  const yearLabels = document.getElementById("yearLabels");
+  const yearSlider = document.getElementById("yearSlider");
 
+  function updateVisibleYear(selectedYear) {
+    for (let year = 1999; year <= 2021; year++) {
+      const span = document.getElementById("year_" + year);
+      if (year == selectedYear) {
+        span.className = ""; // Entfernt alle Klassen
+        span.style.visibility = "visible";
+        span.innerHTML = year; // Setzt das Jahr
+      } else {
+        span.className = "year-dot"; // Fügt die 'year-dot' Klasse hinzu
+        span.style.visibility = "visible";
+        span.innerHTML = "•"; // Setzt einen Punkt
+      }
+    }
+  }
+
+  // Ländercodes anwenden
+  document
+    .getElementById("applyHighlight")
+    .addEventListener("click", function () {
+      const input = document.getElementById("highlightedCountries").value;
+      highlightedCountries = input
+        .split(",")
+        .map((code) => code.trim().toUpperCase());
+      document.getElementById("countryModal").style.display = "none";
+    });
+  //   Jahr-Labels hinzufügen
+  for (let year = 1999; year <= 2021; year++) {
+    const span = document.createElement("span");
+    span.id = "year_" + year;
+    span.innerText = year;
+    span.addEventListener("click", function () {
+      yearSlider.value = year;
+      updateYearData(); // Funktion, die den Slider-Wert verarbeitet
+      updateVisibleYear(year); // Jahr hervorheben
+    });
+    yearLabels.appendChild(span);
+  }
+
+  // Event-Listener für Slider-Änderungen
+  yearSlider.addEventListener("input", function () {
+    const selectedYear = yearSlider.value;
+    updateVisibleYear(selectedYear);
+  });
+
+  // Initial das ausgewählte Jahr sichtbar machen
+  updateVisibleYear(yearSlider.value);
   toggleButton.addEventListener("click", function () {
     if (
       openModalButton.style.display === "none" ||
@@ -56,6 +104,20 @@ document.addEventListener("DOMContentLoaded", function () {
       openModalButton.style.display = "none";
     }
   });
+  // Modal öffnen und schließen
+  btn.onclick = function () {
+    modal.style.display = "block";
+  };
+
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
 });
 
 function updateYearData() {
@@ -64,70 +126,6 @@ function updateYearData() {
 
   giniData = countrys.getDataByYear(currentYear, "gini");
   crimeData = countrys.getDataByYear(currentYear, "crime");
-
-  // debugging
-  if (giniData.length !== crimeData.length) {
-    console.warn(
-      `Datenlängen stimmen für das Jahr ${currentYear} nicht überein: Gini(${giniData.length}) und Kriminalität(${crimeData.length})`
-    );
-
-    // Speichert die Ländercodes aus beiden Datensätzen
-    const giniCountries = giniData.map((entry) =>
-      entry.getString("Country Code")
-    );
-    const crimeCountries = crimeData.map((entry) =>
-      entry.getString("Country Code")
-    );
-
-    // Findet die fehlenden oder zusätzlichen Einträge
-    const missingInGini = crimeCountries.filter(
-      (code) => !giniCountries.includes(code)
-    );
-    const missingInCrime = giniCountries.filter(
-      (code) => !crimeCountries.includes(code)
-    );
-
-    console.log(
-      `Fehlend in Gini-Daten für das Jahr ${currentYear}:`,
-      missingInGini
-    );
-    console.log(
-      `Fehlend in Kriminalitätsdaten für das Jahr ${currentYear}:`,
-      missingInCrime
-    );
-
-    // Neue Debugging-Code hier einfügen
-    giniData.forEach((giniEntry, index) => {
-      const giniCountry = giniEntry.getString("Country Code");
-      const giniValue = giniEntry.getNum("GINI Index");
-
-      const crimeEntry = crimeData[index];
-      const crimeCountry = crimeEntry
-        ? crimeEntry.getString("Country Code")
-        : null;
-      const crimeValue = crimeEntry ? crimeEntry.getNum("Homiciderate") : null;
-
-      if (giniCountry !== crimeCountry) {
-        console.error(
-          `Mismatch at index ${index}: GINI country is ${giniCountry}, Crime country is ${crimeCountry}`
-        );
-      }
-
-      if (isNaN(giniValue)) {
-        console.warn(
-          `Invalid GINI value at index ${index} for country ${giniCountry}`
-        );
-      }
-
-      if (isNaN(crimeValue)) {
-        console.warn(
-          `Invalid Crime value at index ${index} for country ${crimeCountry}`
-        );
-      }
-    });
-    // Ende des neuen Debugging-Codes
-  }
-  // debugging ende
 }
 
 function draw() {
@@ -263,77 +261,65 @@ function distToSegment(x, y, x1, y1, x2, y2) {
   return Math.sqrt(dx * dx + dy * dy);
 }
 
-window.addEventListener("DOMContentLoaded", function () {
-  const yearLabels = document.getElementById("yearLabels");
-  const yearSlider = document.getElementById("yearSlider");
+//   debugging
+function debugDataMismatch(giniData, crimeData, currentYear) {
+  if (giniData.length !== crimeData.length) {
+    console.warn(
+      `Datenlängen stimmen für das Jahr ${currentYear} nicht überein: Gini(${giniData.length}) und Kriminalität(${crimeData.length})`
+    );
 
-  for (let year = 1999; year <= 2021; year++) {
-    const span = document.createElement("span");
-    span.id = "year_" + year;
-    span.innerText = year;
-    span.addEventListener("click", function () {
-      // Event-Listener hinzufügen
-      yearSlider.value = year;
-      updateYearData(); // Ihre Funktion, die den Slider-Wert verarbeitet
-      updateVisibleYear(year); // Jahr hervorheben
+    // Speichert die Ländercodes aus beiden Datensätzen
+    const giniCountries = giniData.map((entry) =>
+      entry.getString("Country Code")
+    );
+    const crimeCountries = crimeData.map((entry) =>
+      entry.getString("Country Code")
+    );
+
+    // Findet die fehlenden oder zusätzlichen Einträge
+    const missingInGini = crimeCountries.filter(
+      (code) => !giniCountries.includes(code)
+    );
+    const missingInCrime = giniCountries.filter(
+      (code) => !crimeCountries.includes(code)
+    );
+
+    console.log(
+      `Fehlend in Gini-Daten für das Jahr ${currentYear}:`,
+      missingInGini
+    );
+    console.log(
+      `Fehlend in Kriminalitätsdaten für das Jahr ${currentYear}:`,
+      missingInCrime
+    );
+
+    giniData.forEach((giniEntry, index) => {
+      const giniCountry = giniEntry.getString("Country Code");
+      const giniValue = giniEntry.getNum("GINI Index");
+
+      const crimeEntry = crimeData[index];
+      const crimeCountry = crimeEntry
+        ? crimeEntry.getString("Country Code")
+        : null;
+      const crimeValue = crimeEntry ? crimeEntry.getNum("Homiciderate") : null;
+
+      if (giniCountry !== crimeCountry) {
+        console.error(
+          `Mismatch at index ${index}: GINI country is ${giniCountry}, Crime country is ${crimeCountry}`
+        );
+      }
+
+      if (isNaN(giniValue)) {
+        console.warn(
+          `Invalid GINI value at index ${index} for country ${giniCountry}`
+        );
+      }
+
+      if (isNaN(crimeValue)) {
+        console.warn(
+          `Invalid Crime value at index ${index} for country ${crimeCountry}`
+        );
+      }
     });
-    yearLabels.appendChild(span);
-  }
-
-  // Event-Listener für Slider-Änderungen
-  yearSlider.addEventListener("input", function () {
-    const selectedYear = yearSlider.value;
-    updateVisibleYear(selectedYear);
-  });
-
-  // Initial das ausgewählte Jahr sichtbar machen
-  updateVisibleYear(yearSlider.value);
-});
-
-function updateVisibleYear(selectedYear) {
-  for (let year = 1999; year <= 2021; year++) {
-    const span = document.getElementById("year_" + year);
-    if (year == selectedYear) {
-      span.className = ""; // Entfernt alle Klassen
-      span.style.visibility = "visible";
-      span.innerHTML = year; // Setzt das Jahr
-    } else {
-      span.className = "year-dot"; // Fügt die 'year-dot' Klasse hinzu
-      span.style.visibility = "visible";
-      span.innerHTML = "•"; // Setzt einen Punkt
-    }
   }
 }
-let highlightedCountries = [];
-
-// Modal öffnen und schließen
-document.addEventListener("DOMContentLoaded", function () {
-  const modal = document.getElementById("countryModal");
-  const btn = document.getElementById("openModal");
-  const span = document.getElementsByClassName("close")[0];
-
-  btn.onclick = function () {
-    modal.style.display = "block";
-  };
-
-  span.onclick = function () {
-    modal.style.display = "none";
-  };
-
-  window.onclick = function (event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  };
-});
-
-// Ländercodes anwenden
-document
-  .getElementById("applyHighlight")
-  .addEventListener("click", function () {
-    const input = document.getElementById("highlightedCountries").value;
-    highlightedCountries = input
-      .split(",")
-      .map((code) => code.trim().toUpperCase());
-    document.getElementById("countryModal").style.display = "none";
-  });
