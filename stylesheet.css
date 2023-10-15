@@ -90,3 +90,46 @@
   visibility: visible;
   color: black; /* oder die Farbe, die Sie für den Punkt verwenden möchten */
 }
+#toggleButton {
+  position: fixed; /* Fixed Position */
+  top: 10px; /* Von der oberen Kante entfernt */
+  right: 10px; /* Von der rechten Kante entfernt */
+  width: 50px; /* Breite */
+  height: 50px; /* Höhe */
+}
+
+/* Modal */
+#openModal {
+  display: none; /* Versteckt den Button standardmäßig */
+  position: fixed; /* Fixed Position */
+  top: 70px; /* Von der oberen Kante entfernt */
+  right: 10px; /* Von der rechten Kante entfernt */
+  width: 50px; /* Breite */
+  height: 50px; /* Höhe */
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #000000;
+  padding: 20px;
+  border: 0.5px solid #888;
+  width: 300px;
+}
+
+.close {
+  cursor: pointer;
+}

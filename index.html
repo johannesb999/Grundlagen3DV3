@@ -16,10 +16,26 @@
     />
   </head>
   <body>
-    <button id="toggleButton">Toggle View</button>
+    <button id="toggleButton">more</button>
     <div id="contentToToggle" style="display: none">
       <!-- Ihr Inhalt hier -->
     </div>
+    <!-- Modal Dialog für die Ländercodes -->
+    <div id="countryModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Please enter the country codes you want to highlight:</p>
+        <input
+          type="text"
+          id="highlightedCountries"
+          placeholder="z.B. USA,DEU,GBR"
+        />
+        <button id="applyHighlight">Anwenden</button>
+      </div>
+    </div>
+
+    <button id="openModal">Ländercodes hinzufügen</button>
+
     <div id="yearLabels"></div>
     <input type="range" id="yearSlider" min="1999" max="2021" value="2000" />
     <span id="yearDisplay" style="display: none">2000</span>

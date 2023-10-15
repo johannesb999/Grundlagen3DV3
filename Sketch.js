@@ -1,5 +1,3 @@
-// im jahr 2014 hängt sich das programm auf wegen ungleicher datenmengen finde aber den fehler in den daten nicht
-
 let crimeRateData;
 let giniIndexData;
 let countrys;
@@ -17,10 +15,11 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight); //slider
+  createCanvas(windowWidth, windowHeight); // Canvas-Größe auf Fenstergröße setzen
+  // slider
   yearSlider = select("#yearSlider");
   yearDisplay = select("#yearDisplay");
-  yearSlider.input(updateYearData); // Funktion, die bei Änderungen am Slider aufgerufen wird
+  yearSlider.input(updateYearData); //bei Änderungen am Slider aufgerufen wird
 
   countrys = new Countrys();
   countrys.loadCrimeRates(crimeRateData);
@@ -29,7 +28,7 @@ function setup() {
   // Debug-Ausgaben
   let currentYear = parseInt(yearSlider.value()); // Konvertieren Sie den Wert in eine Zahl
   yearDisplay.html(currentYear); // Aktuellen Wert im Display anzeigen
-
+  // data read
   giniData = countrys.getDataByYear(currentYear, "gini");
   crimeData = countrys.getDataByYear(currentYear, "crime");
   console.log("Gini data for the year:", giniData);
@@ -45,15 +44,16 @@ function windowResized() {
 
 document.addEventListener("DOMContentLoaded", function () {
   const toggleButton = document.getElementById("toggleButton");
-  const contentToToggle = document.getElementById("contentToToggle");
+  const openModalButton = document.getElementById("openModal");
 
   toggleButton.addEventListener("click", function () {
-    if (contentToToggle.style.display === "none") {
-      contentToToggle.style.display = "block";
-      showLabels = true; // Beschriftung anzeigen
+    if (
+      openModalButton.style.display === "none" ||
+      openModalButton.style.display === ""
+    ) {
+      openModalButton.style.display = "block";
     } else {
-      contentToToggle.style.display = "none";
-      showLabels = false; // Beschriftung ausblenden
+      openModalButton.style.display = "none";
     }
   });
 });
@@ -164,7 +164,16 @@ function draw() {
         let giniPoint = map(giniValue, 0, 100, 650, 100);
         let crimePoint = map(crimeValue, 0, 100, 650, 100);
 
-        stroke(255);
+        if (
+          highlightedCountries.includes(
+            giniData[i].getString("Country Code").toUpperCase()
+          )
+        ) {
+          stroke(255);
+          strokeWeight(2);
+        } else {
+          stroke(40);
+        }
         line(300, giniPoint, 1200, crimePoint);
       } else {
         console.log(
@@ -295,3 +304,36 @@ function updateVisibleYear(selectedYear) {
     }
   }
 }
+let highlightedCountries = [];
+
+// Modal öffnen und schließen
+document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.getElementById("countryModal");
+  const btn = document.getElementById("openModal");
+  const span = document.getElementsByClassName("close")[0];
+
+  btn.onclick = function () {
+    modal.style.display = "block";
+  };
+
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+});
+
+// Ländercodes anwenden
+document
+  .getElementById("applyHighlight")
+  .addEventListener("click", function () {
+    const input = document.getElementById("highlightedCountries").value;
+    highlightedCountries = input
+      .split(",")
+      .map((code) => code.trim().toUpperCase());
+    document.getElementById("countryModal").style.display = "none";
+  });
