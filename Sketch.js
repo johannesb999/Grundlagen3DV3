@@ -152,12 +152,14 @@ function draw() {
     // Beschriftungen für die Gini-Säule hinzufügen
     fill(255); // Textfarbe
     textSize(12); // Textgröße
-    for (let i = 0; i <= 100; i += 10) {
-      let y = map(i, 0, 100, 650, 100);
+    for (let i = 0; i <= 10; i += 1) {
+      // Geändert
+      let y = map(i, 0, 10, 650, 100); // Geändert
       text(i, 280, y);
     }
+
     let leftText = [
-      "CRIME Explanation",
+      "Gini Explanation",
       "sfbfewuf jdfb fjebf djsdwu",
       "sfbfewuf jdfb fjebf djsdw",
       "sfbfewuf jdfb fjebf djsdw",
@@ -174,10 +176,10 @@ function draw() {
       text(i, 1220, y);
     }
     let rightText = [
-      "GINI",
-      "The GINI index shows how fair the",
-      "distribution of income is in a county.",
-      "0 means that all income is equally",
+      "Crime Explanation",
+      "The Crime index shows how many homicides",
+      "per 100.000 inhabithans.",
+      "there are in one Country",
       "distributed.",
     ];
     let xRight = 1250; // Position weit genug rechts
