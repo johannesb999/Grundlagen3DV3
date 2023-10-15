@@ -1,169 +1,302 @@
-// Aufgaben: Console checken // liegt wahrscheinlich an den kommas in der crime datei die müssen weg
-// slider verschönern und besser platzieren
-// jahreszahlanzeige verbessern und besser platzieren
-// alles gestalten
-// tooltip soll der hovereffekt sein aber funktioniert nicht
-// manchmal ist nichts highligtetd obwohl die daten dafür da sind //prüfen ob die daten wirklich richtig verbunden sind
+// es hängt sich ab 2014 auf wahrscheinlich wegen der Daten --> Console
+// schöner gestalten
 
+let crimeRateData;
+let giniIndexData;
+let countrys;
 let giniData;
 let crimeData;
-let selectedCountries = ["ALB", "DEU", "AUS"];
-let giniPoints = [];
-let crimePoints = [];
-let tooltip = document.getElementById("tooltip");
-let countrySpan = document.getElementById("country");
-let giniValueSpan = document.getElementById("giniValue");
-let crimeValueSpan = document.getElementById("crimeValue");
+let tooltip;
+let tooltipText;
+let yearSlider;
+let yearDisplay;
+let showLabels = false;
+let highlightedCountries = [];
+const initiallyHighlightedCountries = ["USA", "DEU", "GBR"];
 
 function preload() {
-  giniData = loadTable("data/ginifinal.csv", "csv", "header");
-  crimeData = loadTable("data/crimefinal.csv", "csv", "header");
+  crimeRateData = loadTable("data/crimerate.csv", "csv", "header");
+  giniIndexData = loadTable("data/giniindex.csv", "csv", "header");
+}
+function loadData() {
+  countrys = new Countrys();
+  countrys.loadCrimeRates(crimeRateData);
+  countrys.loadGiniIndexes(giniIndexData);
 }
 
 function setup() {
-  createCanvas(1500, 750);
-  background(3);
-  console.log(giniData);
-  console.log(crimeData);
-
-  // slider
+  createCanvas(windowWidth, windowHeight);
+  loadData();
   yearSlider = select("#yearSlider");
   yearDisplay = select("#yearDisplay");
+  yearSlider.input(updateYearData);
 
-  // Slider change event
-  yearSlider.input(updateYear);
+  let currentYear = parseInt(yearSlider.value());
+  yearDisplay.html(currentYear);
+  giniData = countrys.getDataByYear(currentYear, "gini");
+  crimeData = countrys.getDataByYear(currentYear, "crime");
+  tooltip = document.getElementById("tooltip");
+  tooltipText = document.getElementById("tooltipText");
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleButton = document.getElementById("toggleButton");
+  const openModalButton = document.getElementById("openModal");
+  const modal = document.getElementById("countryModal");
+  const btn = document.getElementById("openModal");
+  const span = document.getElementsByClassName("close")[0];
+  const yearLabels = document.getElementById("yearLabels");
+  const yearSlider = document.getElementById("yearSlider");
+
+  function updateVisibleYear(selectedYear) {
+    for (let year = 1999; year <= 2021; year++) {
+      const span = document.getElementById("year_" + year);
+      if (year == selectedYear) {
+        span.className = ""; // Entfernt alle Klassen
+        span.style.visibility = "visible";
+        span.innerHTML = year; // Setzt das Jahr
+      } else {
+        span.className = "year-dot"; // Fügt die 'year-dot' Klasse hinzu
+        span.style.visibility = "visible";
+        span.innerHTML = "•"; // Setzt einen Punkt
+      }
+    }
+  }
+
+  // Ländercodes anwenden
+  document
+    .getElementById("applyHighlight")
+    .addEventListener("click", function () {
+      const input = document.getElementById("highlightedCountries").value;
+      highlightedCountries = input
+        .split(",")
+        .map((code) => code.trim().toUpperCase());
+      document.getElementById("countryModal").style.display = "none";
+    });
+  //   Jahr-Labels hinzufügen
+  for (let year = 1999; year <= 2021; year++) {
+    const span = document.createElement("span");
+    span.id = "year_" + year;
+    span.innerText = year;
+    span.addEventListener("click", function () {
+      yearSlider.value = year;
+      updateYearData(); // Funktion, die den Slider-Wert verarbeitet
+      updateVisibleYear(year); // Jahr hervorheben
+    });
+    yearLabels.appendChild(span);
+  }
+
+  // Event-Listener für Slider-Änderungen
+  yearSlider.addEventListener("input", function () {
+    const selectedYear = yearSlider.value;
+    updateVisibleYear(selectedYear);
+  });
+
+  // Initial das ausgewählte Jahr sichtbar machen
+  updateVisibleYear(yearSlider.value);
+  //   Toggle-Button
+  toggleButton.addEventListener("click", function () {
+    showLabels = !showLabels; // Umschalten zwischen true und false
+    if (
+      openModalButton.style.display === "none" ||
+      openModalButton.style.display === ""
+    ) {
+      openModalButton.style.display = "block";
+    } else {
+      openModalButton.style.display = "none";
+    }
+  });
+
+  // Modal öffnen und schließen
+  btn.onclick = function () {
+    modal.style.display = "block";
+  };
+
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+});
+
+function updateYearData() {
+  let currentYear = parseInt(yearSlider.value());
+  yearDisplay.html(currentYear);
+
+  giniData = countrys.getDataByYear(currentYear, "gini");
+  crimeData = countrys.getDataByYear(currentYear, "crime");
 }
 
 function draw() {
+  background(0);
+  //   // Schatteneinstellungen
+  //   drawingContext.shadowOffsetX = 0;
+  //   drawingContext.shadowOffsetY = 0;
+  //   drawingContext.shadowBlur = 20;
+  //   drawingContext.shadowColor = "rgba(255, 255, 255, 0.7)";
+
+  // Zeichnet vertikale Säulen
   stroke(255);
-  line(300, 150, 300, 600); // Gini-Achse
-  line(1150, 150, 1150, 600); // Kriminalitäts-Achse
+  line(300, 100, 300, 650); // Gini-Säule
+  line(1200, 100, 1200, 650); // Crime-Säule
 
-  // Gini-Achse beschriften
-  for (let i = 1; i <= 10; i++) {
-    let y = map(i, 1, 10, 600, 150);
-    text(i, 260, y);
-  }
-
-  // Kriminalitätsrate-Achse beschriften
-  for (let i = 10; i <= 150; i += 10) {
-    let y = map(i, 1, 150, 600, 150);
-    text(i, 1175, y);
-  }
-}
-function updateYear() {
-  yearDisplay.html(yearSlider.value());
-  let selectedYear = yearSlider.value();
-  yearDisplay.html(selectedYear);
-
-  background(3);
-  draw();
-
-  // Zeichne die neuen Gini-Punkte und speichere die Koordinaten
-  let giniPoints = drawGiniPoints();
-  // Zeichne die neuen Kriminalitätspunkte und speichere die Koordinaten
-  let crimePoints = drawCrimePoints();
-
-  // Verbinde die Gini- und Kriminalitätspunkte
-  connectPoints(giniPoints, crimePoints);
-}
-
-function drawGiniPoints() {
-  let points = [];
-  let selectedYear = yearSlider.value();
-  let rows = giniData.findRows(selectedYear.toString(), "Year");
-
-  for (let row of rows) {
-    let giniValue = row.getNum("Value");
-
-    // Transformiere den Gini-Wert in eine y-Koordinate
-    let y = map(giniValue, 1, 60, 600, 150);
-
-    // Zeichne den Datenpunkt
-    // fill(255);
-    // ellipse(300, y, 10, 10);
-    points.push({
-      x: 300,
-      y: y,
-      countryCode: row.getString("Country Code"),
-      value: giniValue,
-    });
-  }
-  return points;
-}
-function drawCrimePoints() {
-  let points = [];
-  let selectedYear = yearSlider.value();
-  let rows = crimeData.findRows(selectedYear.toString(), "Year");
-
-  for (let row of rows) {
-    let crimeValue = row.getNum("Homiciderate");
-
-    // Transformiere den Kriminalitätswert in eine y-Koordinate
-    let y = map(crimeValue, 1, 100, 600, 250);
-
-    // Zeichne den Datenpunkt
-    // fill(255);
-    // ellipse(1150, y, 10, 10);
-    points.push({
-      x: 1150,
-      y: y,
-      countryCode: row.getString("Country Code"),
-      value: crimeValue,
-    });
-  }
-  return points;
-}
-function connectPoints(giniPoints, crimePoints) {
-  // Zeichne zuerst die dunkleren Linien für nicht ausgewählte Länder
-  stroke(40); // Dunkelgrau
-
-  if (giniPoints.length !== crimePoints.length) {
-    console.error(
-      "Mismatched data lengths:",
-      giniPoints.length,
-      crimePoints.length
-    );
-  }
-
-  for (let i = 0; i < giniPoints.length; i++) {
-    if (!selectedCountries.includes(giniPoints[i].countryCode)) {
-      line(
-        giniPoints[i].x,
-        giniPoints[i].y,
-        crimePoints[i].x,
-        crimePoints[i].y
-      );
+  if (showLabels) {
+    // Beschriftungen für die Gini-Säule hinzufügen
+    fill(255); // Textfarbe
+    textSize(12); // Textgröße
+    for (let i = 0; i <= 10; i += 1) {
+      // Geändert
+      let y = map(i, 0, 10, 650, 100); // Geändert
+      text(i, 280, y);
     }
+
+    let leftText = [
+      "Gini Explanation",
+      "sfbfewuf jdfb fjebf djsdwu",
+      "sfbfewuf jdfb fjebf djsdw",
+      "sfbfewuf jdfb fjebf djsdw",
+    ];
+    let xLeft = 50;
+    let yLeft = 550;
+    for (let i = 0; i < leftText.length; i++) {
+      text(leftText[i], xLeft, yLeft + i * 15); // 15 ist der Zeilenabstand
+    }
+
+    // Beschriftungen für die Crime-Säule hinzufügen
+    for (let i = 0; i <= 100; i += 10) {
+      let y = map(i, 0, 100, 650, 100);
+      text(i, 1220, y);
+    }
+    let rightText = [
+      "Crime Explanation",
+      "The Crime index shows how many homicides",
+      "per 100.000 inhabithans.",
+      "there are in one Country",
+      "distributed.",
+    ];
+    let xRight = 1250; // Position weit genug rechts
+    let yRight = 550;
+    for (let i = 0; i < rightText.length; i++) {
+      text(rightText[i], xRight, yRight + i * 15); // 15 ist der Zeilenabstand
+    }
+
+    // Title
+    textSize(32);
+    fill(255); // weiß
+    text("Crime to GINI index", 10, 40); // Text und seine Position
   }
 
-  // Zeichne die hervorgehobenen Linien für ausgewählte Länder
-  stroke(255);
-  for (let i = 0; i < giniPoints.length; i++) {
-    if (selectedCountries.includes(giniPoints[i].countryCode)) {
-      line(
-        giniPoints[i].x,
-        giniPoints[i].y,
-        crimePoints[i].x,
-        crimePoints[i].y
-      );
+  //   Linie zwischen den Punkten
+  for (let i = 0; i < giniData.length; i++) {
+    if (giniData[i] && crimeData[i]) {
+      let giniValue = giniData[i].getNum("GINI Index");
+      let crimeValue = crimeData[i].getNum("Homiciderate");
+
+      // Überprüfen, ob die Werte NaN sind
+      if (!isNaN(giniValue) && !isNaN(crimeValue)) {
+        let giniPoint = map(giniValue, 0, 100, 650, 100);
+        let crimePoint = map(crimeValue, 0, 100, 650, 100);
+
+        if (
+          highlightedCountries.includes(
+            giniData[i].getString("Country Code").toUpperCase()
+          )
+        ) {
+          stroke(255, 100, 30);
+          strokeWeight(2);
+        }
+        if (
+          initiallyHighlightedCountries.includes(
+            giniData[i].getString("Country Code").toUpperCase()
+          )
+        ) {
+          stroke(255, 100, 30);
+        } else {
+          stroke(40);
+        }
+
+        line(300, giniPoint, 1200, crimePoint);
+      } else {
+        console.log(
+          `Ungültige Daten für Index ${i}: GINI: ${giniValue}, Kriminalitätsrate: ${crimeValue}`
+        );
+      }
     }
   }
 }
-// Berechnet den Abstand eines Punktes zu einer Linie für den hovereffekt
-function pointToLineDistance(px, py, x1, y1, x2, y2) {
-  let A = px - x1;
-  let B = py - y1;
-  let C = x2 - x1;
-  let D = y2 - y1;
 
-  let dot = A * C + B * D;
-  let len_sq = C * C + D * D;
-  let param = dot / len_sq;
+function mouseMoved() {
+  for (let i = 0; i < giniData.length; i++) {
+    if (giniData[i] && crimeData[i]) {
+      let giniPoint = map(giniData[i].getNum("GINI Index"), 0, 100, 650, 100);
+      let crimePoint = map(
+        crimeData[i].getNum("Homiciderate"),
+        0,
+        100,
+        650,
+        100
+      );
+
+      // Berechnen Sie den Abstand zwischen Maus und Linie
+      let distance = distToSegment(
+        mouseX,
+        mouseY,
+        300,
+        giniPoint,
+        1200,
+        crimePoint
+      );
+
+      if (distance < 5) {
+        // Wenn der Abstand klein genug ist, zeigen Sie den Tooltip an
+        tooltipText.innerHTML = `
+          <div class="tooltip-divider"></div>
+          <div class="tooltip-row"><span class="tooltip-label">Country:</span> <span class="tooltip-data">${giniData[
+            i
+          ].getString("Entity")}</span></div>
+          <div class="tooltip-row"><span class="tooltip-label">Country Code:</span> <span class="tooltip-data">${giniData[
+            i
+          ].getString("Country Code")}</span></div>
+          <div class="tooltip-row"><span class="tooltip-label">Gini:</span> <span class="tooltip-data">${giniData[
+            i
+          ].getNum("GINI Index")}</span></div>
+          <div class="tooltip-row"><span class="tooltip-label">Crime:</span> <span class="tooltip-data">${crimeData[
+            i
+          ].getNum("Homiciderate")}</span></div>
+        `;
+        tooltip.style.left = mouseX + "px";
+        tooltip.style.top = mouseY + "px";
+        tooltip.style.display = "block";
+        return;
+      }
+    }
+  }
+
+  tooltip.style.display = "none";
+}
+
+// Hilfsfunktion zur Berechnung der kürzesten Entfernung von einem Punkt zu einem Liniensegment
+function distToSegment(x, y, x1, y1, x2, y2) {
+  const A = x - x1;
+  const B = y - y1;
+  const C = x2 - x1;
+  const D = y2 - y1;
+
+  const dot = A * C + B * D;
+  const len_sq = C * C + D * D;
+  const param = dot / len_sq;
 
   let xx, yy;
 
-  if (param < 0) {
+  if (param < 0 || (x1 == x2 && y1 == y2)) {
     xx = x1;
     yy = y1;
   } else if (param > 1) {
@@ -174,44 +307,70 @@ function pointToLineDistance(px, py, x1, y1, x2, y2) {
     yy = y1 + param * D;
   }
 
-  let dx = px - xx;
-  let dy = py - yy;
+  const dx = x - xx;
+  const dy = y - yy;
   return Math.sqrt(dx * dx + dy * dy);
 }
-// mouseMoved() wird aufgerufen, wenn sich die Maus bewegt
-function mouseMoved() {
-  let closestLine = null;
-  let minDistance = 20; // Threshold for distance to the line
 
-  for (let i = 0; i < giniPoints.length; i++) {
-    let d = pointToLineDistance(
-      mouseX,
-      mouseY,
-      giniPoints[i].x,
-      giniPoints[i].y,
-      crimePoints[i].x,
-      crimePoints[i].y
+//   debugging
+function debugDataMismatch(giniData, crimeData, currentYear) {
+  if (giniData.length !== crimeData.length) {
+    console.warn(
+      `Datenlängen stimmen für das Jahr ${currentYear} nicht überein: Gini(${giniData.length}) und Kriminalität(${crimeData.length})`
     );
 
-    if (d < minDistance) {
-      closestLine = i;
-      minDistance = d;
-    }
+    // Speichert die Ländercodes aus beiden Datensätzen
+    const giniCountries = giniData.map((entry) =>
+      entry.getString("Country Code")
+    );
+    const crimeCountries = crimeData.map((entry) =>
+      entry.getString("Country Code")
+    );
+
+    // Findet die fehlenden oder zusätzlichen Einträge
+    const missingInGini = crimeCountries.filter(
+      (code) => !giniCountries.includes(code)
+    );
+    const missingInCrime = giniCountries.filter(
+      (code) => !crimeCountries.includes(code)
+    );
+
+    console.log(
+      `Fehlend in Gini-Daten für das Jahr ${currentYear}:`,
+      missingInGini
+    );
+    console.log(
+      `Fehlend in Kriminalitätsdaten für das Jahr ${currentYear}:`,
+      missingInCrime
+    );
+
+    giniData.forEach((giniEntry, index) => {
+      const giniCountry = giniEntry.getString("Country Code");
+      const giniValue = giniEntry.getNum("GINI Index");
+
+      const crimeEntry = crimeData[index];
+      const crimeCountry = crimeEntry
+        ? crimeEntry.getString("Country Code")
+        : null;
+      const crimeValue = crimeEntry ? crimeEntry.getNum("Homiciderate") : null;
+
+      if (giniCountry !== crimeCountry) {
+        console.error(
+          `Mismatch at index ${index}: GINI country is ${giniCountry}, Crime country is ${crimeCountry}`
+        );
+      }
+
+      if (isNaN(giniValue)) {
+        console.warn(
+          `Invalid GINI value at index ${index} for country ${giniCountry}`
+        );
+      }
+
+      if (isNaN(crimeValue)) {
+        console.warn(
+          `Invalid Crime value at index ${index} for country ${crimeCountry}`
+        );
+      }
+    });
   }
-
-  if (closestLine !== null) {
-    displayLineData(giniPoints[closestLine], crimePoints[closestLine]);
-  } else {
-    tooltip.style.display = "none"; // Hide the tooltip when not needed
-  }
-}
-
-function displayLineData(giniPoint, crimePoint) {
-  countrySpan.textContent = giniPoint.countryCode;
-  giniValueSpan.textContent = giniPoint.value;
-  crimeValueSpan.textContent = crimePoint.value;
-
-  tooltip.style.left = mouseX + 15 + "px";
-  tooltip.style.top = mouseY - 15 + "px";
-  tooltip.style.display = "block";
 }

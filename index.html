@@ -7,7 +7,6 @@
 
     <!-- Load p5 libs-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js"></script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,32 +16,36 @@
     />
   </head>
   <body>
-    <div
-      id="tooltip"
-      style="
-        position: absolute;
-        padding: 10px;
-        background-color: white;
-        border: 1px solid black;
-      "
-    >
-      Land: <span id="country"></span><br />
-      Gini-Wert: <span id="giniValue"></span><br />
-      Kriminalitätsrate: <span id="crimeValue"></span>
+    <!-- <h1>Crime to GINI index</h1> -->
+    <button id="toggleButton">more</button>
+    <div id="contentToToggle" style="display: none"></div>
+
+    <!-- Modal Dialog für die Ländercodes -->
+    <div id="countryModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Please enter the country codes you want to highlight:</p>
+        <input
+          type="text"
+          id="highlightedCountries"
+          placeholder="z.B. USA,DEU,GBR"
+        />
+        <button id="applyHighlight">Anwenden</button>
+      </div>
     </div>
-    <div id="clean">
-      <input
-        type="range"
-        min="1990"
-        max="2021"
-        value="1990"
-        id="yearSlider"
-        step="1"
-      />
-      <span id="yearDisplay">1990</span>
+
+    <button id="openModal">Ländercodes hinzufügen</button>
+
+    <div id="yearLabels"></div>
+    <input type="range" id="yearSlider" min="1999" max="2021" value="1999" />
+    <span id="yearDisplay" style="display: none">2000</span>
+
+    <div id="tooltip" style="position: absolute; display: none">
+      <p id="tooltipText"></p>
     </div>
     <!-- Link documents -->
-    <script src="Sketch.js"></script>
+    <script src="classes.js"></script>
+    <script src="sketch.js"></script>
     <link rel="stylesheet" href="stylesheet.css" />
   </body>
   <footer></footer>
