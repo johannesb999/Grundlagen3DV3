@@ -97,6 +97,13 @@
   width: auto; /* Breite */
   height: auto; /* Höhe */
 }
+#playButton {
+  position: fixed; /* Fixed Position */
+  top: 50px; /* Von der oberen Kante entfernt */
+  right: 10px; /* Von der rechten Kante entfernt */
+  width: auto; /* Breite */
+  height: auto; /* Höhe */
+}
 
 /* Modal */
 #openModal {
