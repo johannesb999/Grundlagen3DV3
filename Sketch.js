@@ -7,12 +7,23 @@ let countrys;
 let giniData;
 let crimeData;
 let tooltip;
+
+let playButton;
+
 let tooltipText;
 let yearSlider;
 let yearDisplay;
 let showLabels = false;
 let highlightedCountries = [];
+let highlightedCountriesShowLabel = false;
 const initiallyHighlightedCountries = ["USA", "DEU", "GBR"];
+
+let isPlaying = false; // Flag to indicate if the animation is playing
+let animationInterval; // Interval variable for animation
+let minYear = 1999; // Minimum year
+let maxYear = 2021; // Maximum year
+let currentYear = minYear; // The current year
+
 
 function preload() {
   crimeRateData = loadTable("data/crimerate.csv", "csv", "header");
@@ -22,6 +33,8 @@ function loadData() {
   countrys = new Countrys();
   countrys.loadCrimeRates(crimeRateData);
   countrys.loadGiniIndexes(giniIndexData);
+  console.log(crimeRateData)
+  console.log(giniIndexData)
 }
 
 function setup() {
@@ -31,7 +44,7 @@ function setup() {
   yearDisplay = select("#yearDisplay");
   yearSlider.input(updateYearData);
 
-  let currentYear = parseInt(yearSlider.value());
+  currentYear = parseInt(yearSlider.value()); // hier
   yearDisplay.html(currentYear);
   giniData = countrys.getDataByYear(currentYear, "gini");
   crimeData = countrys.getDataByYear(currentYear, "crime");
@@ -42,8 +55,22 @@ function setup() {
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
-
+function updateVisibleYear(selectedYear) {
+  for (let year = 1999; year <= 2021; year++) {
+    const span = document.getElementById("year_" + year);
+    if (year == selectedYear) {
+      span.className = ""; // Entfernt alle Klassen
+      span.style.visibility = "visible";
+      span.innerHTML = year; // Setzt das Jahr
+    } else {
+      span.className = "year-dot"; // Fügt die 'year-dot' Klasse hinzu
+      span.style.visibility = "visible";
+      span.innerHTML = "•"; // Setzt einen Punkt
+    }
+  }
+}
 document.addEventListener("DOMContentLoaded", function () {
+  const playButton = document.getElementById("playButton");
   const toggleButton = document.getElementById("toggleButton");
   const openModalButton = document.getElementById("openModal");
   const modal = document.getElementById("countryModal");
@@ -52,26 +79,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const yearLabels = document.getElementById("yearLabels");
   const yearSlider = document.getElementById("yearSlider");
 
-  function updateVisibleYear(selectedYear) {
-    for (let year = 1999; year <= 2021; year++) {
-      const span = document.getElementById("year_" + year);
-      if (year == selectedYear) {
-        span.className = ""; // Entfernt alle Klassen
-        span.style.visibility = "visible";
-        span.innerHTML = year; // Setzt das Jahr
-      } else {
-        span.className = "year-dot"; // Fügt die 'year-dot' Klasse hinzu
-        span.style.visibility = "visible";
-        span.innerHTML = "•"; // Setzt einen Punkt
-      }
-    }
-  }
+
 
   // Ländercodes anwenden
   document
     .getElementById("applyHighlight")
     .addEventListener("click", function () {
+      highlightedCountriesShowLabel = false;
       const input = document.getElementById("highlightedCountries").value;
+      console.log(input)
+      initiallyHighlightedCountries.push(input);
       highlightedCountries = input
         .split(",")
         .map((code) => code.trim().toUpperCase());
@@ -113,26 +130,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Modal öffnen und schließen
   btn.onclick = function () {
+    highlightedCountriesShowLabel = true;
     modal.style.display = "block";
   };
 
   span.onclick = function () {
+    highlightedCountriesShowLabel = false;
     modal.style.display = "none";
   };
 
   window.onclick = function (event) {
     if (event.target == modal) {
+      highlightedCountriesShowLabel = false;
       modal.style.display = "none";
     }
   };
+
+  // playButton.addEventListener("click", toggleAnimation);
+  playButton.addEventListener("click", toggleAnimation);
+
+
+
 });
 
 function updateYearData() {
-  let currentYear = parseInt(yearSlider.value());
+  currentYear = parseInt(yearSlider.value());//hier
+  console.log("hier")
   yearDisplay.html(currentYear);
-
   giniData = countrys.getDataByYear(currentYear, "gini");
   crimeData = countrys.getDataByYear(currentYear, "crime");
+  console.log(currentYear)
+  console.log(giniData)
+  console.log(crimeData)
 }
 
 function draw() {
@@ -234,30 +263,31 @@ function draw() {
 }
 
 function mouseMoved() {
-  for (let i = 0; i < giniData.length; i++) {
-    if (giniData[i] && crimeData[i]) {
-      let giniPoint = map(giniData[i].getNum("GINI Index"), 0, 100, 650, 100);
-      let crimePoint = map(
-        crimeData[i].getNum("Homiciderate"),
-        0,
-        100,
-        650,
-        100
-      );
+  if (!highlightedCountriesShowLabel) {
+    for (let i = 0; i < giniData.length; i++) {
+      if (giniData[i] && crimeData[i]) {
+        let giniPoint = map(giniData[i].getNum("GINI Index"), 0, 100, 650, 100);
+        let crimePoint = map(
+          crimeData[i].getNum("Homiciderate"),
+          0,
+          100,
+          650,
+          100
+        );
 
-      // Berechnen Sie den Abstand zwischen Maus und Linie
-      let distance = distToSegment(
-        mouseX,
-        mouseY,
-        300,
-        giniPoint,
-        1200,
-        crimePoint
-      );
+        // Berechnen Sie den Abstand zwischen Maus und Linie
+        let distance = distToSegment(
+          mouseX,
+          mouseY,
+          300,
+          giniPoint,
+          1200,
+          crimePoint
+        );
 
-      if (distance < 5) {
-        // Wenn der Abstand klein genug ist, zeigen Sie den Tooltip an
-        tooltipText.innerHTML = `
+        if (distance < 5) {
+          // Wenn der Abstand klein genug ist, zeigen Sie den Tooltip an
+          tooltipText.innerHTML = `
           <div class="tooltip-divider"></div>
           <div class="tooltip-row"><span class="tooltip-label">Country:</span> <span class="tooltip-data">${giniData[
             i
@@ -272,10 +302,11 @@ function mouseMoved() {
             i
           ].getNum("Homiciderate")}</span></div>
         `;
-        tooltip.style.left = mouseX + "px";
-        tooltip.style.top = mouseY + "px";
-        tooltip.style.display = "block";
-        return;
+          tooltip.style.left = mouseX + "px";
+          tooltip.style.top = mouseY + "px";
+          tooltip.style.display = "block";
+          return;
+        }
       }
     }
   }
@@ -374,3 +405,28 @@ function debugDataMismatch(giniData, crimeData, currentYear) {
     });
   }
 }
+
+function toggleAnimation() {
+  isPlaying = !isPlaying;
+
+  if (isPlaying) {
+    document.getElementById("playButton").innerHTML = "Pause";
+    animationInterval = setInterval(function () {
+      // Increment the current year
+      currentYear++;
+      if (currentYear > maxYear) {
+        currentYear = minYear;
+      }
+      yearSlider.value(currentYear);
+      updateYearData();
+      updateVisibleYear(currentYear)
+      // yearSlider.html(currentYear);
+    }, 1000); // 1000 milliseconds (1 second) delay
+  } else {
+    document.getElementById("playButton").innerHTML = "Play";
+    clearInterval(animationInterval);
+  }
+}
+
+
+
