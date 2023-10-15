@@ -17,6 +17,7 @@ let showLabels = false;
 let highlightedCountries = [];
 let highlightedCountriesShowLabel = false;
 const initiallyHighlightedCountries = ["USA", "DEU", "GBR"];
+let highlightedIndex = -1;
 
 let isPlaying = false; // Flag to indicate if the animation is playing
 let animationInterval; // Interval variable for animation
@@ -160,11 +161,6 @@ function updateYearData() {
 
 function draw() {
   background(0);
-  //   // Schatteneinstellungen
-  //   drawingContext.shadowOffsetX = 0;
-  //   drawingContext.shadowOffsetY = 0;
-  //   drawingContext.shadowBlur = 20;
-  //   drawingContext.shadowColor = "rgba(255, 255, 255, 0.7)";
 
   // Zeichnet vertikale Säulen
   stroke(255);
@@ -217,7 +213,7 @@ function draw() {
     text("Crime to GINI index", 10, 40); // Text und seine Position
   }
 
-  //   Linie zwischen den Punkten
+  // Linie zwischen den Punkten
   for (let i = 0; i < giniData.length; i++) {
     if (giniData[i] && crimeData[i]) {
       let giniValue = giniData[i].getNum("GINI Index");
@@ -225,27 +221,33 @@ function draw() {
 
       // Überprüfen, ob die Werte NaN sind
       if (!isNaN(giniValue) && !isNaN(crimeValue)) {
-        let giniPoint = map(giniValue, 0, 100, 650, 100);
+        let giniPoint = map(giniValue, 0, 10, 650, 100);
         let crimePoint = map(crimeValue, 0, 100, 650, 100);
 
-        if (
+        // Entscheiden, welche Linienfarbe und -stärke zu verwenden ist
+        if (i === highlightedIndex) {
+          stroke(255, 0, 0);
+          strokeWeight(2);
+        } else if (
           highlightedCountries.includes(
             giniData[i].getString("Country Code").toUpperCase()
           )
         ) {
           stroke(255, 100, 30);
           strokeWeight(2);
-        }
-        if (
+        } else if (
           initiallyHighlightedCountries.includes(
             giniData[i].getString("Country Code").toUpperCase()
           )
         ) {
           stroke(255, 100, 30);
+          strokeWeight(1);
         } else {
           stroke(40);
+          strokeWeight(1);
         }
 
+        // Linie zeichnen
         line(300, giniPoint, 1200, crimePoint);
       } else {
         console.log(
@@ -260,7 +262,7 @@ function mouseMoved() {
   if (!highlightedCountriesShowLabel) {
     for (let i = 0; i < giniData.length; i++) {
       if (giniData[i] && crimeData[i]) {
-        let giniPoint = map(giniData[i].getNum("GINI Index"), 0, 100, 650, 100);
+        let giniPoint = map(giniData[i].getNum("GINI Index"), 0, 10, 650, 100);
         let crimePoint = map(
           crimeData[i].getNum("Homiciderate"),
           0,
@@ -269,7 +271,7 @@ function mouseMoved() {
           100
         );
 
-        // Berechnen Sie den Abstand zwischen Maus und Linie
+        // Berechnet die Entfernung von der Maus zum Liniensegment
         let distance = distToSegment(
           mouseX,
           mouseY,
@@ -280,7 +282,7 @@ function mouseMoved() {
         );
 
         if (distance < 5) {
-          // Wenn der Abstand klein genug ist, zeigen Sie den Tooltip an
+          highlightedIndex = i;
           tooltipText.innerHTML = `
           <div class="tooltip-divider"></div>
           <div class="tooltip-row"><span class="tooltip-label">Country:</span> <span class="tooltip-data">${giniData[
@@ -335,6 +337,28 @@ function distToSegment(x, y, x1, y1, x2, y2) {
   const dx = x - xx;
   const dy = y - yy;
   return Math.sqrt(dx * dx + dy * dy);
+}
+
+function toggleAnimation() {
+  isPlaying = !isPlaying;
+
+  if (isPlaying) {
+    document.getElementById("playButton").innerHTML = "Pause";
+    animationInterval = setInterval(function () {
+      // Increment the current year
+      currentYear++;
+      if (currentYear > maxYear) {
+        currentYear = minYear;
+      }
+      yearSlider.value(currentYear);
+      updateYearData();
+      updateVisibleYear(currentYear);
+      // yearSlider.html(currentYear);
+    }, 1000); // 1000 milliseconds (1 second) delay
+  } else {
+    document.getElementById("playButton").innerHTML = "Play";
+    clearInterval(animationInterval);
+  }
 }
 
 //   debugging
@@ -397,27 +421,5 @@ function debugDataMismatch(giniData, crimeData, currentYear) {
         );
       }
     });
-  }
-}
-
-function toggleAnimation() {
-  isPlaying = !isPlaying;
-
-  if (isPlaying) {
-    document.getElementById("playButton").innerHTML = "Pause";
-    animationInterval = setInterval(function () {
-      // Increment the current year
-      currentYear++;
-      if (currentYear > maxYear) {
-        currentYear = minYear;
-      }
-      yearSlider.value(currentYear);
-      updateYearData();
-      updateVisibleYear(currentYear);
-      // yearSlider.html(currentYear);
-    }, 1000); // 1000 milliseconds (1 second) delay
-  } else {
-    document.getElementById("playButton").innerHTML = "Play";
-    clearInterval(animationInterval);
   }
 }
