@@ -1,120 +1,53 @@
-#clean {
-  display: flex;
-  flex-wrap: wrap;
-}
-#yearLabels {
-  position: absolute; /* Position festlegen */
-  bottom: 40px; /* Abstand vom unteren Rand */
-  left: 50%; /* Horizontale Zentrierung */
-  transform: translateX(-50%); /* Verschiebung für die Zentrierung */
-  display: flex; /* Flexbox für die Anordnung */
-  justify-content: space-between; /* Abstand zwischen den Elementen */
-  width: 80%; /* Breite entsprechend dem Slider */
-}
-
-#yearLabels span {
-  color: #ffffff; /* Schriftfarbe */
-  font-size: 12px; /* Schriftgröße */
-  cursor: pointer; /* Zeiger */
-}
-
-#yearSlider {
-  -webkit-appearance: none;
-  appearance: none; /* Verhindert die Standardanzeige in Chrome */
-  width: 80%;
-  height: 1px;
-  background: transparent; /* Macht die Linie unsichtbar */
-  border: none;
-  outline: none;
-  opacity: 0; /* Macht den Slider selbst unsichtbar */
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1; /* Stellt sicher, dass der Slider über den Jahreszahlen ist */
-  margin-bottom: 30px; /* Verschiebt den Sliderpunkt unter die Jahreszahlen */
-}
-
-#yearSlider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 40px; /* Erhöhte Breite */
-  height: 40px; /* Erhöhte Höhe */
-  background: #04aa6d;
-  cursor: pointer;
-  margin-top: -19px; /* Anpassung für die vertikale Zentrierung */
-}
-
-#yearSlider::-moz-range-thumb {
-  width: 40px; /* Erhöhte Breite */
-  height: 40px; /* Erhöhte Höhe */
-  background: #04aa6d;
-  cursor: pointer;
-}
-
-#tooltip {
-  text-align: left;
-  position: absolute;
-  display: none;
-  background-color: rgba(255, 255, 255, 0.1); /* transparenter Hintergrund */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* leicht sichtbarer Rand */
-  border-radius: 10px; /* stark abgerundete Ecken */
-  backdrop-filter: blur(10px); /* Verschwommener Hintergrund */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* leichter Schatten */
-  width: auto; /* Breite dynamisch an den Inhalt anpassen */
-  height: auto; /* Höhe dynamisch an den Inhalt anpassen */
-  white-space: nowrap; /* Verhindert Textumbruch */
-  padding: 10px; /* Innenabstand festlegen */
-  font-family: Arial, sans-serif; /* Schriftart */
-  font-size: 14px; /* Schriftgröße */
-  color: #fff; /* Textfarbe */
-}
-.tooltip-row {
-  display: flex;
-  justify-content: space-between;
-}
-
-.tooltip-label {
-  font-weight: bold;
-  margin-right: 5px;
-}
-
+html,
+body,
+p,
+h1,
+h2,
+h3,
+span,
+.tooltip-label,
 .tooltip-data {
-  text-align: right;
+  font-family: "Julius Sans One", sans-serif;
 }
 
-#yearDisplay {
-  bottom: 0;
+/* Buttons */
+button {
+  background: transparent;
+  color: rgba(95, 95, 95, 0.848);
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
 }
-.year-dot {
-  visibility: visible;
-  color: black; /* oder die Farbe, die Sie für den Punkt verwenden möchten */
+
+button:hover {
+  background: rgba(255, 255, 255, 0.269);
+  color: white;
 }
+
+#toggleButton,
+#playButton,
+#openModal {
+  position: fixed;
+  right: 10px;
+  display: none; /* Initial hidden */
+}
+
 #toggleButton {
-  position: fixed; /* Fixed Position */
-  top: 10px; /* Von der oberen Kante entfernt */
-  right: 10px; /* Von der rechten Kante entfernt */
-  width: auto; /* Breite */
-  height: auto; /* Höhe */
+  top: 10px;
+  display: block; /* Override initial hidden */
 }
+
 #playButton {
-  position: fixed; /* Fixed Position */
-  top: 50px; /* Von der oberen Kante entfernt */
-  right: 10px; /* Von der rechten Kante entfernt */
-  width: auto; /* Breite */
-  height: auto; /* Höhe */
+  top: 50px;
+}
+
+#openModal {
+  top: 90px;
 }
 
 /* Modal */
-#openModal {
-  display: none; /* Versteckt den Button standardmäßig */
-  position: fixed; /* Fixed Position */
-  top: 70px; /* Von der oberen Kante entfernt */
-  right: 10px; /* Von der rechten Kante entfernt */
-  width: 50px; /* Breite */
-  height: 50px; /* Höhe */
-}
-
 .modal {
   display: none;
   position: fixed;
@@ -133,17 +66,87 @@
   transform: translate(-50%, -50%);
   background-color: #000000;
   padding: 20px;
-  border: 0.5px solid #888;
-  width: 300px;
+  border: none;
 }
 
 .close {
   cursor: pointer;
 }
-/* #toggleButton,
-#yearSlider,
-#openModal,
-#tooltip,
-h1 {
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
-} */
+
+/* Year Labels and Slider */
+#yearLabels {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+#yearLabels span {
+  color: #ffffff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+#yearSlider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 80%;
+  height: 1px;
+  background: transparent;
+  border: none;
+  outline: none;
+  opacity: 0;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  margin-bottom: 30px;
+}
+
+#yearSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  margin-top: -19px;
+}
+
+#yearSlider::-moz-range-thumb {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+/* Tooltip */
+#tooltip {
+  text-align: left;
+  position: absolute;
+  display: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  backdrop-filter: blur(2px);
+  white-space: nowrap;
+  padding: 10px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.tooltip-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tooltip-label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.tooltip-data {
+  text-align: right;
+}

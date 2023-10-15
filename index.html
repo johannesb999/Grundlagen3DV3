@@ -5,50 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crime to GINI index</title>
 
-    <!-- Load p5 libs-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"></script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
-    <!-- <h1>Crime to GINI index</h1> -->
-    <button id="toggleButton">more</button>
-    <button id="playButton">play</button>
+    <button id="toggleButton" class="Buttons">show data</button>
+    <button id="playButton" class="Buttons">play</button>
+    <button id="openModal" class="Buttons">add Country Code</button>
+
+    <!-- Content to Toggle -->
     <div id="contentToToggle" style="display: none"></div>
 
-    <!-- Modal Dialog für die Ländercodes -->
+    <!-- Modal Dialog for Country Codes -->
     <div id="countryModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
-        <p>Please enter the country codes you want to highlight:</p>
+        <p>Please enter the country codes you´d like to highlight:</p>
         <input
           type="text"
           id="highlightedCountries"
-          placeholder="z.B. USA,DEU,GBR"
+          placeholder="e.g. USA,DEU,GBR"
         />
-        <button id="applyHighlight">Anwenden</button>
+        <button id="applyHighlight">apply</button>
       </div>
     </div>
 
-    <button id="openModal">Ländercodes hinzufügen</button>
-
+    <!-- Year Controls -->
     <div id="yearLabels"></div>
     <input type="range" id="yearSlider" min="1999" max="2021" value="1999" />
     <span id="yearDisplay" style="display: none">2000</span>
 
+    <!-- Tooltip -->
     <div id="tooltip" style="position: absolute; display: none">
       <p id="tooltipText"></p>
     </div>
-    <!-- Link documents -->
+
+    <!-- Script Includes -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"></script>
     <script src="classes.js"></script>
     <script src="sketch.js"></script>
     <!-- <script src="Buttons.js"></script> -->
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="stylesheet.css" />
+
+    <!-- Footer -->
+    <footer></footer>
   </body>
-  <footer></footer>
 </html>

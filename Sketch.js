@@ -1,6 +1,3 @@
-// es hängt sich ab 2014 auf wahrscheinlich wegen der Daten --> Console
-// schöner gestalten
-
 let crimeRateData;
 let giniIndexData;
 let countrys;
@@ -24,10 +21,12 @@ let animationInterval; // Interval variable for animation
 let minYear = 1999; // Minimum year
 let maxYear = 2021; // Maximum year
 let currentYear = minYear; // The current year
+let myFont;
 
 function preload() {
   crimeRateData = loadTable("data/crimerate.csv", "csv", "header");
   giniIndexData = loadTable("data/giniindex.csv", "csv", "header");
+  myFont = loadFont("Fonts/JuliusSansOne-Regular.ttf");
 }
 function loadData() {
   countrys = new Countrys();
@@ -39,6 +38,7 @@ function loadData() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  textFont(myFont);
   loadData();
   yearSlider = select("#yearSlider");
   yearDisplay = select("#yearDisplay");
@@ -121,8 +121,10 @@ document.addEventListener("DOMContentLoaded", function () {
       openModalButton.style.display === ""
     ) {
       openModalButton.style.display = "block";
+      playButton.style.display = "block";
     } else {
       openModalButton.style.display = "none";
+      playButton.style.display = "none";
     }
   });
 
@@ -178,15 +180,16 @@ function draw() {
     }
 
     let leftText = [
-      "Gini Explanation",
-      "sfbfewuf jdfb fjebf djsdwu",
-      "sfbfewuf jdfb fjebf djsdw",
-      "sfbfewuf jdfb fjebf djsdw",
+      "Gini-index:",
+      "The Gini index shows how  ",
+      "unequal the distribution of",
+      "income is in one country.",
+      "Index one is low.",
     ];
     let xLeft = 50;
     let yLeft = 550;
     for (let i = 0; i < leftText.length; i++) {
-      text(leftText[i], xLeft, yLeft + i * 15); // 15 ist der Zeilenabstand
+      text(leftText[i], xLeft, yLeft + i * 20); // 15 ist der Zeilenabstand
     }
 
     // Beschriftungen für die Crime-Säule hinzufügen
@@ -195,11 +198,11 @@ function draw() {
       text(i, 1220, y);
     }
     let rightText = [
-      "Crime Explanation",
-      "The Crime index shows how many homicides",
-      "per 100.000 inhabithans.",
-      "there are in one Country",
-      "distributed.",
+      "Crime-index:",
+      "The Crime index shows how  ",
+      "many homicides per 100.000",
+      "inhabithans there are in  ",
+      "one Country distributed.",
     ];
     let xRight = 1250; // Position weit genug rechts
     let yRight = 550;
@@ -208,8 +211,8 @@ function draw() {
     }
 
     // Title
-    textSize(32);
-    fill(255); // weiß
+    textSize(28);
+    fill(125, 125, 125, 0.75); // weiß
     text("Crime to GINI index", 10, 40); // Text und seine Position
   }
 
@@ -228,21 +231,27 @@ function draw() {
         if (i === highlightedIndex) {
           stroke(255, 0, 0);
           strokeWeight(2);
-        } else if (
+        }
+        // hervorgehobene Länder über eingabe
+        else if (
           highlightedCountries.includes(
             giniData[i].getString("Country Code").toUpperCase()
           )
         ) {
           stroke(255, 100, 30);
           strokeWeight(2);
-        } else if (
+        }
+        // prüfen ob die Länder über code highlighted sind
+        else if (
           initiallyHighlightedCountries.includes(
             giniData[i].getString("Country Code").toUpperCase()
           )
         ) {
           stroke(255, 100, 30);
           strokeWeight(1);
-        } else {
+        }
+        // Grau für alle anderen Länder
+        else {
           stroke(40);
           strokeWeight(1);
         }
@@ -280,7 +289,28 @@ function mouseMoved() {
           1200,
           crimePoint
         );
+        // Überprüfen, ob die Maus in der Nähe der Gini-Säule ist
+        if (mouseX >= 290 && mouseX <= 310 && mouseY >= 100 && mouseY <= 650) {
+          tooltipText.innerHTML = "GINI-Index";
+          tooltip.style.left = mouseX + "px";
+          tooltip.style.top = mouseY + "px";
+          tooltip.style.display = "block";
+          return;
+        }
 
+        // Überprüfen, ob die Maus in der Nähe der Kriminalitätssäule ist
+        if (
+          mouseX >= 1190 &&
+          mouseX <= 1210 &&
+          mouseY >= 100 &&
+          mouseY <= 650
+        ) {
+          tooltipText.innerHTML = "Crime-Index";
+          tooltip.style.left = mouseX + "px";
+          tooltip.style.top = mouseY + "px";
+          tooltip.style.display = "block";
+          return;
+        }
         if (distance < 5) {
           highlightedIndex = i;
           tooltipText.innerHTML = `
@@ -358,68 +388,5 @@ function toggleAnimation() {
   } else {
     document.getElementById("playButton").innerHTML = "Play";
     clearInterval(animationInterval);
-  }
-}
-
-//   debugging
-function debugDataMismatch(giniData, crimeData, currentYear) {
-  if (giniData.length !== crimeData.length) {
-    console.warn(
-      `Datenlängen stimmen für das Jahr ${currentYear} nicht überein: Gini(${giniData.length}) und Kriminalität(${crimeData.length})`
-    );
-
-    // Speichert die Ländercodes aus beiden Datensätzen
-    const giniCountries = giniData.map((entry) =>
-      entry.getString("Country Code")
-    );
-    const crimeCountries = crimeData.map((entry) =>
-      entry.getString("Country Code")
-    );
-
-    // Findet die fehlenden oder zusätzlichen Einträge
-    const missingInGini = crimeCountries.filter(
-      (code) => !giniCountries.includes(code)
-    );
-    const missingInCrime = giniCountries.filter(
-      (code) => !crimeCountries.includes(code)
-    );
-
-    console.log(
-      `Fehlend in Gini-Daten für das Jahr ${currentYear}:`,
-      missingInGini
-    );
-    console.log(
-      `Fehlend in Kriminalitätsdaten für das Jahr ${currentYear}:`,
-      missingInCrime
-    );
-
-    giniData.forEach((giniEntry, index) => {
-      const giniCountry = giniEntry.getString("Country Code");
-      const giniValue = giniEntry.getNum("GINI Index");
-
-      const crimeEntry = crimeData[index];
-      const crimeCountry = crimeEntry
-        ? crimeEntry.getString("Country Code")
-        : null;
-      const crimeValue = crimeEntry ? crimeEntry.getNum("Homiciderate") : null;
-
-      if (giniCountry !== crimeCountry) {
-        console.error(
-          `Mismatch at index ${index}: GINI country is ${giniCountry}, Crime country is ${crimeCountry}`
-        );
-      }
-
-      if (isNaN(giniValue)) {
-        console.warn(
-          `Invalid GINI value at index ${index} for country ${giniCountry}`
-        );
-      }
-
-      if (isNaN(crimeValue)) {
-        console.warn(
-          `Invalid Crime value at index ${index} for country ${crimeCountry}`
-        );
-      }
-    });
   }
 }
