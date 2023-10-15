@@ -2,46 +2,68 @@
   display: flex;
   flex-wrap: wrap;
 }
-#yearSlider {
-  width: 80%; /* Breite des Sliders */
-  height: 1px; /* Höhe des Sliders */
-  background-color: #ffffff; /* Hintergrundfarbe des Sliders */
-  border: none; /* Kein Rand */
-  border-radius: 5px; /* Abrundung der Ecken */
-  outline: none; /* Entfernt den blauen Rand bei Fokus */
-  margin: 0 auto; /* Zentriert den Slider horizontal */
-  position: absolute;
-  bottom: 0;
-  /* padding-bottom: 150px; */
-  left: 50%;
-  transform: translateX(-50%);
+#yearLabels {
+  position: absolute; /* Position festlegen */
+  bottom: 40px; /* Abstand vom unteren Rand */
+  left: 50%; /* Horizontale Zentrierung */
+  transform: translateX(-50%); /* Verschiebung für die Zentrierung */
+  display: flex; /* Flexbox für die Anordnung */
+  justify-content: space-between; /* Abstand zwischen den Elementen */
+  width: 80%; /* Breite entsprechend dem Slider */
 }
 
-/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+#yearLabels span {
+  color: #ffffff; /* Schriftfarbe */
+  font-size: 12px; /* Schriftgröße */
+  cursor: pointer; /* Zeiger */
+}
+
+#yearSlider {
+  -webkit-appearance: none; /* Verhindert die Standardanzeige in Chrome */
+  width: 80%;
+  height: 1px;
+  background: transparent; /* Macht die Linie unsichtbar */
+  border: none;
+  outline: none;
+  opacity: 0; /* Macht den Slider selbst unsichtbar */
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1; /* Stellt sicher, dass der Slider über den Jahreszahlen ist */
+  margin-bottom: 30px; /* Verschiebt den Sliderpunkt unter die Jahreszahlen */
+}
+
 #yearSlider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
+  -webkit-appearance: none;
   appearance: none;
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: #04aa6d; /* Green background */
-  cursor: pointer; /* Cursor on hover */
+  width: 25px;
+  height: 25px;
+  background: #04aa6d;
+  cursor: pointer;
+  margin-top: -12px; /* Zentriert den Slider-Punkt vertikal */
 }
 
 #yearSlider::-moz-range-thumb {
-  width: 25px; /* Set a specific slider handle width */
-  height: 25px; /* Slider handle height */
-  background: #04aa6d; /* Green background */
-  cursor: pointer; /* Cursor on hover */
+  width: 25px;
+  height: 25px;
+  background: #04aa6d;
+  cursor: pointer;
 }
 
 #tooltip {
   position: absolute;
-  display: block;
-  width: 50px;
-  height: 50px;
+  display: none;
+  background-color: white;
+  border: 1px solid black;
+  width: 200px; /* Breite festlegen */
+  padding: 10px; /* Innenabstand festlegen */
 }
 
 #yearDisplay {
   bottom: 0;
-  font-family: ;
+}
+.year-dot {
+  visibility: visible;
+  color: black; /* oder die Farbe, die Sie für den Punkt verwenden möchten */
 }
