@@ -13,7 +13,7 @@ let yearDisplay;
 let showLabels = false;
 let highlightedCountries = [];
 let highlightedCountriesShowLabel = false;
-const initiallyHighlightedCountries = ["USA", "DEU", "GBR"];
+const initiallyHighlightedCountries = ["CHL", "ISL", "SLV", "RUS"];
 let highlightedIndex = -1;
 
 let isPlaying = false; // Flag to indicate if the animation is playing
@@ -26,7 +26,7 @@ let myFont;
 function preload() {
   crimeRateData = loadTable("data/crimerate.csv", "csv", "header");
   giniIndexData = loadTable("data/giniindex.csv", "csv", "header");
-  myFont = loadFont("Fonts/JuliusSansOne-Regular.ttf");
+  myFont = loadFont("Fonts/TitilliumWeb-Regular.ttf");
 }
 function loadData() {
   countrys = new Countrys();
@@ -171,25 +171,20 @@ function draw() {
 
   if (showLabels) {
     // Beschriftungen für die Gini-Säule hinzufügen
-    fill(255); // Textfarbe
-    textSize(12); // Textgröße
+    noStroke();
+    fill(150); // Textfarbe
+    textSize(13); // Textgröße
     for (let i = 0; i <= 10; i += 1) {
       // Geändert
       let y = map(i, 0, 10, 650, 100); // Geändert
       text(i, 280, y);
     }
 
-    let leftText = [
-      "Gini-index:",
-      "The Gini index shows how  ",
-      "unequal the distribution of",
-      "income is in one country.",
-      "Index one is low.",
-    ];
+    let leftText = ["Gini-index:", "distribution of income", "low 1 - 10 high"];
     let xLeft = 50;
     let yLeft = 550;
     for (let i = 0; i < leftText.length; i++) {
-      text(leftText[i], xLeft, yLeft + i * 20); // 15 ist der Zeilenabstand
+      text(leftText[i], xLeft, yLeft + i * 18); // 15 ist der Zeilenabstand
     }
 
     // Beschriftungen für die Crime-Säule hinzufügen
@@ -197,23 +192,18 @@ function draw() {
       let y = map(i, 0, 100, 650, 100);
       text(i, 1220, y);
     }
-    let rightText = [
-      "Crime-index:",
-      "The Crime index shows how  ",
-      "many homicides per 100.000",
-      "inhabithans there are in  ",
-      "one Country distributed.",
-    ];
-    let xRight = 1250; // Position weit genug rechts
+    let rightText = ["Crime-index:", "how many homicides,", "per 100.000"];
+    let xRight = 1350;
     let yRight = 550;
     for (let i = 0; i < rightText.length; i++) {
-      text(rightText[i], xRight, yRight + i * 15); // 15 ist der Zeilenabstand
+      text(rightText[i], xRight, yRight + i * 18); // 18 ist der Zeilenabstand
     }
 
     // Title
     textSize(28);
-    fill(125, 125, 125, 0.75); // weiß
-    text("Crime to GINI index", 10, 40); // Text und seine Position
+    noStroke();
+    fill(255); // weiß
+    text("Crime to GINI index", 50, 40); // Text und seine Position
   }
 
   // Linie zwischen den Punkten

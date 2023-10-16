@@ -7,22 +7,23 @@ h3,
 span,
 .tooltip-label,
 .tooltip-data {
-  font-family: "Julius Sans One", sans-serif;
+  font-family: "Titillium Web", sans-serif;
 }
 
 /* Buttons */
 button {
   background: transparent;
-  color: rgba(95, 95, 95, 0.848);
+  color: rgb(129, 129, 129);
   border: none;
   cursor: pointer;
   font-size: 16px;
   padding: 10px 20px;
   margin-bottom: 10px;
+  font-family: "Titillium Web", sans-serif;
 }
 
 button:hover {
-  background: rgba(255, 255, 255, 0.269);
+  background: rgba(110, 110, 110, 0.355);
   color: white;
 }
 
