@@ -166,8 +166,9 @@ function draw() {
 
   // Zeichnet vertikale Säulen
   stroke(255);
-  line(300, 100, 300, 650); // Gini-Säule
-  line(1200, 100, 1200, 650); // Crime-Säule
+  strokeWeight(0.7);
+  line(299, 100, 299, 650); // Gini-Säule
+  line(1201, 100, 1201, 650); // Crime-Säule
 
   if (showLabels) {
     // Beschriftungen für die Gini-Säule hinzufügen
@@ -181,7 +182,7 @@ function draw() {
     }
 
     let leftText = ["Gini-index:", "distribution of income", "low 1 - 10 high"];
-    let xLeft = 50;
+    let xLeft = 30;
     let yLeft = 550;
     for (let i = 0; i < leftText.length; i++) {
       text(leftText[i], xLeft, yLeft + i * 18); // 15 ist der Zeilenabstand
@@ -203,7 +204,7 @@ function draw() {
     textSize(28);
     noStroke();
     fill(255); // weiß
-    text("Crime to GINI index", 50, 40); // Text und seine Position
+    text("Crime to GINI index", 30, 50); // Text und seine Position
   }
 
   // Linie zwischen den Punkten
@@ -228,7 +229,7 @@ function draw() {
             giniData[i].getString("Country Code").toUpperCase()
           )
         ) {
-          stroke(255, 100, 30);
+          stroke(255, 200, 20);
           strokeWeight(2);
         }
         // prüfen ob die Länder über code highlighted sind
@@ -237,12 +238,12 @@ function draw() {
             giniData[i].getString("Country Code").toUpperCase()
           )
         ) {
-          stroke(255, 100, 30);
+          stroke(255, 120, 70);
           strokeWeight(1);
         }
         // Grau für alle anderen Länder
         else {
-          stroke(40);
+          stroke(50);
           strokeWeight(1);
         }
 
